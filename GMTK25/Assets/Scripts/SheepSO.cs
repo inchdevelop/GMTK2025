@@ -10,11 +10,5 @@ public class SheepSO : ScriptableObject
     [SerializeField] public Sprite sprite;
     [SerializeField] public int scoreValue;
     [SerializeField] public float moveInterval;
-    [SerializeField] public SheepType type;
-    public enum SheepType
-    {
-        WHITE,
-        BLACK,
-        GOLD
-    }
+    [SerializeField] public Sheep.SheepType type;
 }

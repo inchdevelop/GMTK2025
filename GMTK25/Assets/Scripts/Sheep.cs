@@ -7,6 +7,14 @@ public class Sheep : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] CapsuleCollider2D capsuleCollider;
     [SerializeField] SheepSO sheepSO;
+    public enum SheepType
+    {
+        WHITE,
+        BLACK,
+        GOLD,
+        NUM_SHEEP
+    }
+
     // Start is called before the first frame update
     void Start()
     {
