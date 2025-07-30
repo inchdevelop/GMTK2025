@@ -42,10 +42,10 @@ public class SheepManager : MonoBehaviour
     void SpawnSheep()
     {
         bool canSpawn = false;
-        while(!canSpawn)
-        {
+      //  while(!canSpawn)
+     //   {
 
-        }
+      //  }
         SpawnThisSheepAt(GetRandomSheepType(), GetRandomSpawnLocation());
         
     }
