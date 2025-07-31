@@ -323,11 +323,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheepPrefabs:
   - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
-  - {fileID: 1214778352837015751, guid: 6b9336d95ead1344ab1d79a0b2dddd8e, type: 3}
-  - {fileID: 5764171693448643896, guid: 82defe3776622b04c8f5ab803d884d93, type: 3}
+  - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
+  - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
   currentSheep: []
   spawnZone: {fileID: 431258207}
-  startSheep: 5
+  startSheep: 10
+  spawnInterval: 1.5
 --- !u!4 &1152564407
 Transform:
   m_ObjectHideFlags: 0

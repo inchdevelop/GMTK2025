@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 5f95ed9fe2b09f44bbaf27e16c865392, type: 3}
   scoreValue: 0
-  moveInterval: 0.5
+  speed: 0.001
+  moveInterval: 1
   type: 1

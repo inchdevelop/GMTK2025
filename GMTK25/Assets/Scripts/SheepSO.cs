@@ -9,6 +9,7 @@ public class SheepSO : ScriptableObject
 
     [SerializeField] public Sprite sprite;
     [SerializeField] public int scoreValue;
+    [SerializeField] public float speed;
     [SerializeField] public float moveInterval;
     [SerializeField] public Sheep.SheepType type;
 }

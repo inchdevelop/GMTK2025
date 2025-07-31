@@ -11,6 +11,17 @@ public class SheepManager : MonoBehaviour
     [SerializeField] BoxCollider2D spawnZone;
 
     [SerializeField] int startSheep;
+    [SerializeField] float spawnInterval;
+    bool canSpawnSheep = true;
+
+    public static SheepManager instance;
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
         SpawnNumSheep(startSheep);
@@ -19,7 +30,19 @@ public class SheepManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(canSpawnSheep)
+        {
+            StartCoroutine(SheepSpawnTimer());
+        }
+    }
+
+    public IEnumerator SheepSpawnTimer()
+    {
+        canSpawnSheep = false;
+        SpawnSheep();
+        //Debug.Log("Spawned sheep");
+        yield return new WaitForSeconds(spawnInterval);
+        canSpawnSheep = true;
     }
 
     void SpawnNumSheep(int num)
@@ -42,11 +65,15 @@ public class SheepManager : MonoBehaviour
     void SpawnSheep()
     {
         bool canSpawn = false;
-      //  while(!canSpawn)
-     //   {
+        Vector2 spawnPos = Vector2.zero;
+        while(!canSpawn)
+        {
+            //check for if position is in bounds of any other sheep 
 
-      //  }
-        SpawnThisSheepAt(GetRandomSheepType(), GetRandomSpawnLocation());
+            spawnPos = GetRandomSpawnLocation();
+            canSpawn = CanSpawnAt(spawnPos);
+        }
+        SpawnThisSheepAt(GetRandomSheepType(), spawnPos);
         
     }
 
@@ -58,13 +85,20 @@ public class SheepManager : MonoBehaviour
 
     bool CanSpawnAt(Vector2 spawn)
     {
-        bool canSpawn = false;
+        bool canSpawn = true;
+        foreach (GameObject sheep in currentSheep)
+        {
+            if (sheep.GetComponent<Sheep>().spawnBuffer.bounds.Contains(spawn))
+            {
+                canSpawn = false;
+                //Debug.Log(spawn + " is located in " + sheep.name);
+            }
 
-
-        return canSpawn;
+        }
+            return canSpawn;
     }
 
-    Vector2 GetRandomSpawnLocation()
+    public Vector2 GetRandomSpawnLocation()
     {
         Vector2 spawn;
         Vector2 leftBounds;
