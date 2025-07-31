@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] int totalScore;
+
     [SerializeField] int scoreMult;
+    [SerializeField] int maxMult;
+    [SerializeField] float multDecreaseTime;
+    [SerializeField] float currentComboTime;
+    [SerializeField] bool comboUp;
+
      bool isPaused = false;
 
     [SerializeField] int numDashes;
@@ -26,6 +33,7 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         playerInput.onPlayerDash += PlayerDash;
+        playerInput.onPlayerDash += MultIncrease;
         playerInput.onPlayerPause += PlayerPause;
         Dogbowl.onDashRecovery += DashRecovery;
         SheepManager.onGameOver += GameOver;
@@ -34,9 +42,24 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         playerInput.onPlayerDash -= PlayerDash;
+        playerInput.onPlayerDash -= MultIncrease;
         playerInput.onPlayerPause -= PlayerPause;
         Dogbowl.onDashRecovery -= DashRecovery;
         SheepManager.onGameOver -= GameOver;
+    }
+
+    private void Update()
+    {
+        if(comboUp)
+        {
+            currentComboTime += Time.deltaTime;
+            if(currentComboTime >= multDecreaseTime)
+            {
+                comboUp = false;
+                currentComboTime = 0;
+                MultReset();
+            }
+        }
     }
 
     public bool CheckDash()
@@ -51,6 +74,22 @@ public class GameManager : MonoBehaviour
             numDashes = 0;
         UIManager.instance.DashUI(numDashes);
         
+    }
+
+    void MultIncrease()
+    {
+        scoreMult *= 2;
+        if(scoreMult > maxMult)
+            scoreMult = maxMult;
+        UIManager.instance.ComboUI(Mathf.Log(scoreMult, 2) - 1);
+        comboUp = true;
+        currentComboTime = 0f;
+    }
+
+    void MultReset()
+    {
+        scoreMult = 1;
+        UIManager.instance.ComboUI(Mathf.Log(scoreMult, 2) -1);
     }
 
     public void DashRecovery()
@@ -82,10 +121,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("CombinedScene");
         Time.timeScale = 1.0f;
-    }
-    
-    public void Menu()
-    {
-       
     }
 }

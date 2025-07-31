@@ -36,11 +36,11 @@ public class playerInput : MonoBehaviour
         //speed flat? code
         if (speed >= defaultSpeed)
         {
-            speed -= speedFall;
+            speed -= speedFall * Time.deltaTime;
         }
         else
         {
-            speed += speedFall;
+            speed += speedFall * Time.deltaTime;
         }
 
         //input pause

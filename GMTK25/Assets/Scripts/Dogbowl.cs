@@ -15,12 +15,16 @@ public class Dogbowl : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (!collision.gameObject.CompareTag("Player"))
+            return;
         if (canRecover)
             StartCoroutine(DogbowlTimer());
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if(!collision.gameObject.CompareTag("Player"))
+            return;
         canRecover = false;
     }
 
@@ -28,7 +32,6 @@ public class Dogbowl : MonoBehaviour
     {   if (canRecover)
         {
             onDashRecovery?.Invoke();
-            Debug.Log("dogbowl");
         }
         canRecover = false;
         yield return new WaitForSeconds(dashRecoveryInterval);

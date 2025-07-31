@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreTF;
 
     [SerializeField] Image[] dashes;
-    int curDash;
+    [SerializeField] Image[] combos;
     public static UIManager instance;
     private void Awake()
     {
@@ -47,7 +47,6 @@ public class UIManager : MonoBehaviour
 
     public void DashUI(int dashNum)
     {
-        Debug.Log(dashNum);
         foreach(Image image in dashes)
         {
             image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
@@ -55,6 +54,22 @@ public class UIManager : MonoBehaviour
         for(int i = 0; i < dashNum; i++)
         {
             dashes[i].color = new Color(dashes[i].color.r, dashes[i].color.g, dashes[i].color.b, 1f);
+        }
+    }
+
+    public void ComboUI(float comboNum)
+    {
+        foreach(Image image in combos)
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
+        }
+
+        for(int i = 0; i < combos.Length; i++)
+        {
+            if( i == comboNum )
+            {
+                combos[i].color = new Color(combos[i].color.r, combos[i].color.g, combos[i].color.b, 1f);
+            }
         }
     }
 
