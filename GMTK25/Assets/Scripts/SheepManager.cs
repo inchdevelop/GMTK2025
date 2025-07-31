@@ -15,6 +15,9 @@ public class SheepManager : MonoBehaviour
     bool canSpawnSheep = true;
 
     public static SheepManager instance;
+
+    public delegate void OnGameOver();
+    public static event OnGameOver onGameOver;
     private void Awake()
     {
         if(instance == null)
@@ -60,6 +63,10 @@ public class SheepManager : MonoBehaviour
         newSheep.transform.position = spawn;
 
         currentSheep.Add(newSheep);
+
+        if (currentSheep.Count >= GameManager.instance.maxSheep)
+            onGameOver?.Invoke();
+
     }
 
     void SpawnSheep()

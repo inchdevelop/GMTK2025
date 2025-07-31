@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7116372900968439889}
   - component: {fileID: 7480258209202955253}
   - component: {fileID: 1786604467862619106}
+  - component: {fileID: 3743093141259535527}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Sheep
@@ -86,6 +87,34 @@ MonoBehaviour:
   capsuleCollider: {fileID: 7480258209202955253}
   spawnBuffer: {fileID: 6696091969050680759}
   sheepSO: {fileID: 11400000, guid: a319ce85eaaced24fb5ca4b526871033, type: 2}
+  targetPos: {x: 0, y: 0}
+--- !u!50 &3743093141259535527
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470874606365491392}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &6448180725419608053
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +176,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

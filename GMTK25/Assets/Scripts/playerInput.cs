@@ -11,6 +11,11 @@ public class playerInput : MonoBehaviour
     public float dashSpeed = 20; //speed mult for dog
     public float speedFall = 0.2f; //speed fall off for dog
 
+    public delegate void OnPlayerDash();
+    public static event OnPlayerDash onPlayerDash;
+
+    public delegate void OnPlayerPause();
+    public static event OnPlayerPause onPlayerPause;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +43,13 @@ public class playerInput : MonoBehaviour
             speed += speedFall;
         }
 
+        //input pause
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            onPlayerPause?.Invoke();
+        }
+
+
         //input wasd and arrows
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
@@ -64,7 +76,11 @@ public class playerInput : MonoBehaviour
 
         IEnumerator doggyDash()
         {
-            speed = dashSpeed;
+            if (GameManager.instance.CheckDash())
+            {
+                speed = dashSpeed;
+                onPlayerDash?.Invoke();
+            }
             yield return null;
         }
     }

@@ -48,7 +48,7 @@ public class Sheep : MonoBehaviour
 
     public void MoveSheep()
     {
-        Debug.Log("moving" + gameObject.name);
+        //Debug.Log("moving" + gameObject.name);
         switch(sheepSO.type)
         {
             case SheepType.WHITE:
