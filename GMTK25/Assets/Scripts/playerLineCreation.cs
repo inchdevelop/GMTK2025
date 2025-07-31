@@ -10,6 +10,10 @@ public class playerLineCreation : MonoBehaviour
     public GameObject player;
     private SpriteShapeController sprite;
     private Spline spline;
+    private PolygonCollider2D spritetri;
+    public float timer;
+    public float timer2;
+    public float timeadj;
 
     public int count = 0;
 
@@ -18,21 +22,26 @@ public class playerLineCreation : MonoBehaviour
     {
         sprite = GetComponent<SpriteShapeController>();
         spline = sprite.spline;
+        spritetri = GetComponent<PolygonCollider2D>();
         count = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Backspace))
+
+        timer2 += Time.deltaTime;
+
+        if (timer2 >= timeadj)
         {
+            //spritetri.points.SetValue(player.gameObject.transform.position, count);
             count++;
-            //GameObject newball = Instantiate(lasso);
-            //newball.transform.position = player.transform.position;
-            //Destroy(newball,5f);
-            spline.InsertPointAt(count, player.transform.position);
-            StartCoroutine(doggyLine());
+            GameObject newball = Instantiate(lasso);
+            newball.transform.position = player.transform.position;
+            Destroy(newball,timer);
+            //spline.InsertPointAt(count, player.transform.position);
+            //StartCoroutine(doggyLine());
+            timer2 = 0;
         }
 
         //if (count == 2)
@@ -54,13 +63,18 @@ public class playerLineCreation : MonoBehaviour
         //    //spline.SetPosition(i, player.transform.position);
         //}
         //count = 0;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(timer);
 
         spline.RemovePointAt(0);
 
         count = spline.GetPointCount() - 1;
 
-        yield return null;
+        if (count == 1)
+        {
+            spline.SetPosition(0, player.transform.position);
+            spline.SetPosition(1, player.transform.position * 0.9f);
+        }
+
     }
 
     IEnumerator line()
