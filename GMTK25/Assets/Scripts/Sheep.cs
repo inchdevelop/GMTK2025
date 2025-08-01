@@ -9,9 +9,13 @@ public class Sheep : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] CapsuleCollider2D capsuleCollider;
     [SerializeField] public BoxCollider2D spawnBuffer;
-    [SerializeField] SheepSO sheepSO;
+    [SerializeField] public SheepSO sheepSO;
+    [SerializeField] Animator sheepAnimator;
+    [SerializeField] GameObject sprite;
 
-    [SerializeField] Vector2 targetPos;
+    [SerializeField] public Vector2 targetPos;
+    [SerializeField] Quaternion targetRot;
+    [SerializeField] float rotSpeed;
     bool moveTimer = true;
     public enum SheepType
     {
@@ -20,6 +24,12 @@ public class Sheep : MonoBehaviour
         GOLD,
         NUM_SHEEP
     }
+
+    public delegate void OnSheepCollide();
+    public static event OnSheepCollide onSheepCollide;
+
+    public delegate void OnSheepKnockUp(GameObject sheep);
+    public static event OnSheepKnockUp onSheepKnockUp;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +65,7 @@ public class Sheep : MonoBehaviour
                 MoveWhiteSheep();
                 break;
             case SheepType.BLACK:
-                MoveBlackSheep();
+                MoveWhiteSheep();
                 break;
             case SheepType.GOLD:
                 MoveGoldSheep();
@@ -66,10 +76,14 @@ public class Sheep : MonoBehaviour
     public void MoveWhiteSheep()
     {
         transform.position = Vector2.Lerp(transform.position, targetPos, sheepSO.speed);
+        RotateToNewPos(gameObject.transform.position, targetPos);
     }
 
-    void ChangeTargetPos()
+    public void ChangeTargetPos()
     {
+        Vector2 oldTargetPos = targetPos;
+
+        //read type of sheep prob 
         bool canMove = false;
         while (!canMove)
         {
@@ -78,15 +92,65 @@ public class Sheep : MonoBehaviour
             if (!spawnBuffer.bounds.Contains(targetPos))
                 canMove = false;
         }
+        
+    }
+
+    //DOESNT WORK RN
+    void RotateToNewPos(Vector3 oldPos, Vector3 newPos)
+    {
+        Vector2 targetDirection = (transform.position - newPos).normalized;
+
+        float angle = (Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg) - 90f;
+      
+        gameObject.transform.eulerAngles = new Vector3(0, 0, angle);
+        
+       // Quaternion targetRotation = Quaternion.LookRotation(transform.forward,targetDirection);
+       
+        //Quaternion newRotation = Quaternion.RotateTowards(sprite.transform.rotation, targetRotation, rotSpeed  * Time.deltaTime);
+        //Debug.Log("targetRotation is " + newRotation);
+
+       // gameObject.GetComponent<Rigidbody2D>().MoveRotation(newRotation);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, targetPos);
     }
 
     public void MoveBlackSheep()
     {
-
+        
     }
     
     public void MoveGoldSheep()
     {
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Player"))
+            return;
+        playerInput thePlayer = collision.gameObject.GetComponent<playerInput>();
+
+        if (thePlayer.currentState == playerInput.DogStates.RUN)
+            onSheepCollide?.Invoke();
+        else
+        {
+            onSheepKnockUp?.Invoke(gameObject);
+            SheepKnockUp();
+        }
+
+    }
+
+
+    public void SheepKnockUp()
+    {
+        sheepAnimator.Play("SheepKnockUp");
+    }
+
+    public void SheepDestroy()
+    {
+        Destroy(gameObject);
     }
 }

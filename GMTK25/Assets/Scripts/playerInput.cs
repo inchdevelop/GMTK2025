@@ -11,11 +11,21 @@ public class playerInput : MonoBehaviour
     public float dashSpeed = 20; //speed mult for dog
     public float speedFall = 0.2f; //speed fall off for dog
 
+    public DogStates currentState;
+
     public delegate void OnPlayerDash();
     public static event OnPlayerDash onPlayerDash;
 
     public delegate void OnPlayerPause();
     public static event OnPlayerPause onPlayerPause;
+
+    public enum DogStates
+    {
+        RUN,
+        DASH,
+        NUM_STATES
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,10 +47,14 @@ public class playerInput : MonoBehaviour
         if (speed >= defaultSpeed)
         {
             speed -= speedFall * Time.deltaTime;
+            if (speed >= defaultSpeed)
+                currentState = DogStates.DASH;
+
         }
         else
         {
             speed += speedFall * Time.deltaTime;
+            currentState = DogStates.RUN;
         }
 
         //input pause

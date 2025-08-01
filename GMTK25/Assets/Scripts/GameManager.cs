@@ -35,7 +35,12 @@ public class GameManager : MonoBehaviour
         playerInput.onPlayerDash += PlayerDash;
         playerInput.onPlayerDash += MultIncrease;
         playerInput.onPlayerPause += PlayerPause;
+
+        Sheep.onSheepCollide += PlayerDash;
+        Sheep.onSheepKnockUp += SheepKnockedUp;
+
         Dogbowl.onDashRecovery += DashRecovery;
+        
         SheepManager.onGameOver += GameOver;
     }
 
@@ -44,7 +49,12 @@ public class GameManager : MonoBehaviour
         playerInput.onPlayerDash -= PlayerDash;
         playerInput.onPlayerDash -= MultIncrease;
         playerInput.onPlayerPause -= PlayerPause;
+        
+        Sheep.onSheepCollide -= PlayerDash;
+        Sheep.onSheepKnockUp -= SheepKnockedUp;
+
         Dogbowl.onDashRecovery -= DashRecovery;
+
         SheepManager.onGameOver -= GameOver;
     }
 
@@ -121,5 +131,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("CombinedScene");
         Time.timeScale = 1.0f;
+    }
+
+    public void SheepKnockedUp(GameObject sheep)
+    {
+        SheepManager.instance.DeleteSheep(sheep);
     }
 }

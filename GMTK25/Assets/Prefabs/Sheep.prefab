@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7480258209202955253}
   - component: {fileID: 1786604467862619106}
   - component: {fileID: 3743093141259535527}
+  - component: {fileID: 2686518684630902743}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Sheep
@@ -87,7 +88,11 @@ MonoBehaviour:
   capsuleCollider: {fileID: 7480258209202955253}
   spawnBuffer: {fileID: 6696091969050680759}
   sheepSO: {fileID: 11400000, guid: a319ce85eaaced24fb5ca4b526871033, type: 2}
+  sheepAnimator: {fileID: 2686518684630902743}
+  sprite: {fileID: 8872694060684663730}
   targetPos: {x: 0, y: 0}
+  targetRot: {x: 0, y: 0, z: 0, w: 0}
+  rotSpeed: 1000
 --- !u!50 &3743093141259535527
 Rigidbody2D:
   serializedVersion: 4
@@ -115,6 +120,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &2686518684630902743
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470874606365491392}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4cc6206b791d50943a0ca387513f2afe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6448180725419608053
 GameObject:
   m_ObjectHideFlags: 0

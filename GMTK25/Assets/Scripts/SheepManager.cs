@@ -39,6 +39,11 @@ public class SheepManager : MonoBehaviour
         }
     }
 
+    public void DeleteSheep(GameObject sheep)
+    {
+        currentSheep.Remove(sheep);
+    }
+
     public IEnumerator SheepSpawnTimer()
     {
         canSpawnSheep = false;

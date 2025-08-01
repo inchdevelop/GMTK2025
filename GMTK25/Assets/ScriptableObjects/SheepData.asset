@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7207c0ea8eda44d4690274b999188be7, type: 3}
   m_Name: SheepData
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 27b7d539264bd2340b3ce4b2073d0e3c, type: 3}
+  sprite: {fileID: 21300000, guid: 90f4ea6661452404199dc4691461b1ec, type: 3}
   scoreValue: 0
   speed: 0.001
-  moveInterval: 0.5
+  moveInterval: 0.75
   type: 0
