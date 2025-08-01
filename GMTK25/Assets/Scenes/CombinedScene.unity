@@ -2807,7 +2807,7 @@ MonoBehaviour:
   - {fileID: 1214778352837015751, guid: 6b9336d95ead1344ab1d79a0b2dddd8e, type: 3}
   - {fileID: 5764171693448643896, guid: 69c4b37a53c276046a0ede85e7cb2579, type: 3}
   - {fileID: 5764171693448643896, guid: 99e26baead7c1e44bbbb51fe72ca31ae, type: 3}
-  - {fileID: 330781898495786673, guid: 54418e67e1c780842a95ccbf545180db, type: 3}
+  - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
   - {fileID: 8661636758112746853, guid: 1dc49d925bb6f4a40ae1f0c49bcf3f4f, type: 3}
   - {fileID: 7033028572942249631, guid: d459f3239d2c20740ae28e8bfa3e66ba, type: 3}
   currentSheep: []
@@ -3652,6 +3652,57 @@ Transform:
   - {fileID: 2132057412}
   - {fileID: 2094417720}
   - {fileID: 371233504}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1881398126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1881398128}
+  - component: {fileID: 1881398127}
+  m_Layer: 0
+  m_Name: lasso
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1881398127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881398126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ba046408760eb44a2145dc58a04eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lasso: {fileID: 3095688112354963064, guid: 4436f8f95c62eab49b4037bf751cab6b, type: 3}
+  player: {fileID: 464353400}
+  maxPoints: 100
+  minDist: 0.25
+  pointCheck: 0.2
+  pointList: []
+  tempList: []
+--- !u!4 &1881398128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881398126}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1894231719
@@ -4660,3 +4711,4 @@ SceneRoots:
   - {fileID: 802247594}
   - {fileID: 769485801}
   - {fileID: 1844912838}
+  - {fileID: 1881398128}

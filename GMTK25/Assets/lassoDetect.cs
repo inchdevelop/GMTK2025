@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class lassoDetect : MonoBehaviour
 {
+
+    int sheepCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,14 +16,22 @@ public class lassoDetect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        StartCoroutine(killCode());
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Lasso")
+        if (collider.tag == "Sheep")
         {
-            Debug.DrawRay(gameObject.transform.position, Vector2.up, Color.white, 5f);
+            sheepCount++;
+            SheepManager.instance.DestroySheep(collider.gameObject);
         }
+    }
+
+    IEnumerator killCode()
+    {
+        yield return new WaitForSeconds(1f);
+        Debug.Log(sheepCount);
+        Destroy(gameObject);
     }
 }
