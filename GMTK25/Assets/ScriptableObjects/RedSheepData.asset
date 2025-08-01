@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7207c0ea8eda44d4690274b999188be7, type: 3}
-  m_Name: GoldSheepData
+  m_Name: RedSheepData
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 0fe265ca9437ef24f833e4b73b87ee2a, type: 3}
+  sprite: {fileID: 21300000, guid: 90f4ea6661452404199dc4691461b1ec, type: 3}
   scoreValue: 0
   speed: 0.001
-  moveInterval: 2
-  type: 2
+  moveInterval: 0.75
+  type: 5

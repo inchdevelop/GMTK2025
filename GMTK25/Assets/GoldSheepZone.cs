@@ -27,6 +27,8 @@ public class GoldSheepZone : MonoBehaviour
         Vector3 forceDirection = (gameObject.transform.position - collision.gameObject.transform.position).normalized;
 
         collision.gameObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * zoneForce * Time.deltaTime);
-        Debug.Log("Adding force " + forceDirection + " to " + collision.gameObject.name);
+        Vector3 lookDirection = (gameObject.transform.position - collision.gameObject.transform.position).normalized;
+        collision.gameObject.transform.right = lookDirection * Time.deltaTime;
+        //Debug.Log("Adding force " + forceDirection + " to " + collision.gameObject.name);
     }
 }

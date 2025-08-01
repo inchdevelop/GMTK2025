@@ -22,6 +22,11 @@ public class Sheep : MonoBehaviour
         WHITE,
         BLACK,
         GOLD,
+        FAT,
+        PINK,
+        RED,
+        BROWN,
+        BLUE,
         NUM_SHEEP
     }
 
@@ -68,7 +73,22 @@ public class Sheep : MonoBehaviour
                 MoveWhiteSheep();
                 break;
             case SheepType.GOLD:
-                MoveGoldSheep();
+                MoveWhiteSheep();
+                break;
+            case SheepType.FAT:
+                MoveWhiteSheep();
+                break;
+            case SheepType.PINK:
+                MoveWhiteSheep();
+                break;
+            case SheepType.RED:
+                MoveWhiteSheep();
+                break;
+            case SheepType.BROWN:
+                MoveBrownSheep();
+                break;
+            case SheepType.BLUE:
+                MoveWhiteSheep();
                 break;
         }
     }
@@ -117,14 +137,9 @@ public class Sheep : MonoBehaviour
         Gizmos.DrawLine(transform.position, targetPos);
     }
 
-    public void MoveBlackSheep()
+    public void MoveBrownSheep()
     {
         
-    }
-    
-    public void MoveGoldSheep()
-    {
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

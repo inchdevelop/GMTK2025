@@ -28,6 +28,6 @@ public class BlackSheepZone : MonoBehaviour
         Vector3 forceDirection = (gameObject.transform.position - collision.gameObject.transform.position).normalized;
 
         collision.gameObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * -zoneForce * Time.deltaTime);
-        Debug.Log("Adding force " + forceDirection + " to " + collision.gameObject.name);
+        //Debug.Log("Adding force " + forceDirection + " to " + collision.gameObject.name);
     }
 }
