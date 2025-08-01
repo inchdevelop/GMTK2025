@@ -63,6 +63,7 @@ public class SheepManager : MonoBehaviour
 
     void SpawnThisSheepAt(Sheep.SheepType type, Vector2 spawn)
     {
+        Debug.Log(type);
         GameObject sheepObject = sheepPrefabs[(int)type];
         GameObject newSheep = Instantiate(sheepObject, this.gameObject.transform);
         newSheep.transform.position = spawn;
