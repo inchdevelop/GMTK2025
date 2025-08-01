@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c981c20cc02e1fc4eb5ba413d262095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneForce: {x: 0.5, y: 0.5, z: 0}
+  zoneForce: 50
   blackSheepZone: {fileID: 2601191709728612842}
 --- !u!1001 &3373335473296898055
 PrefabInstance:

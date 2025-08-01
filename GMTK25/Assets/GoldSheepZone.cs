@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackSheepZone : MonoBehaviour
+public class GoldSheepZone : MonoBehaviour
 {
     [SerializeField] float zoneForce;
-    [SerializeField] CapsuleCollider2D blackSheepZone;
+    [SerializeField] CapsuleCollider2D capsuleCollider;
+    // Start is called before the first frame update
     void Start()
     {
         
@@ -19,15 +20,13 @@ public class BlackSheepZone : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-       
-        if (!collision.gameObject.CompareTag("Sheep"))
+        if (!collision.gameObject.GetComponent<Sheep>())
             return;
-        if (collision.gameObject.GetComponent<Sheep>().sheepSO.type == Sheep.SheepType.BLACK)
+        if (collision.gameObject.GetComponent<Sheep>().sheepSO.type == Sheep.SheepType.GOLD)
             return;
-
         Vector3 forceDirection = (gameObject.transform.position - collision.gameObject.transform.position).normalized;
 
-        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * -zoneForce * Time.deltaTime);
+        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * zoneForce * Time.deltaTime);
         Debug.Log("Adding force " + forceDirection + " to " + collision.gameObject.name);
     }
 }
