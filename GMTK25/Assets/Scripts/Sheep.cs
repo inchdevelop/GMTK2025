@@ -10,7 +10,7 @@ public class Sheep : MonoBehaviour
     [SerializeField] CapsuleCollider2D capsuleCollider;
     [SerializeField] public BoxCollider2D spawnBuffer;
     [SerializeField] public SheepSO sheepSO;
-    [SerializeField] Animator sheepAnimator;
+    [SerializeField] public Animator sheepAnimator;
     [SerializeField] GameObject sprite;
 
     [SerializeField] public Vector2 targetPos;
@@ -29,6 +29,14 @@ public class Sheep : MonoBehaviour
         BLUE,
         NUM_SHEEP
     }
+
+    public enum SheepMovement
+    {
+        MOVE,
+        FOLLOW,
+        FLEE
+    }
+
 
     public delegate void OnSheepCollide();
     public static event OnSheepCollide onSheepCollide;
@@ -138,8 +146,12 @@ public class Sheep : MonoBehaviour
     }
 
     public void MoveBrownSheep()
-    {
+    { 
         
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, player.transform.position, sheepSO.speed * Time.deltaTime);
+        
+        RotateToNewPos(gameObject.transform.position, player.transform.position);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -149,7 +161,10 @@ public class Sheep : MonoBehaviour
         playerInput thePlayer = collision.gameObject.GetComponent<playerInput>();
 
         if (thePlayer.currentState == playerInput.DogStates.RUN)
+        {
             onSheepCollide?.Invoke();
+            SheepCollide();
+        }
         else
         {
             onSheepKnockUp?.Invoke(gameObject);
@@ -158,6 +173,10 @@ public class Sheep : MonoBehaviour
 
     }
 
+    public void SheepCollide()
+    {
+        
+    }
 
     public void SheepKnockUp()
     {
@@ -167,5 +186,12 @@ public class Sheep : MonoBehaviour
     public void SheepDestroy()
     {
         Destroy(gameObject);
+    }
+
+    public void RedSheepExplode()
+    {
+        if (sheepSO.type != SheepType.RED)
+            return;
+        GetComponent<RedSheepZone>().Explosion();
     }
 }

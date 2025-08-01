@@ -44,6 +44,14 @@ public class SheepManager : MonoBehaviour
         currentSheep.Remove(sheep);
     }
 
+    public void DestroySheep(GameObject sheep)
+    {
+        currentSheep.Remove(sheep);
+        
+        Sheep theSheep = sheep.GetComponent<Sheep>();
+        theSheep.SheepKnockUp();
+    }
+
     public IEnumerator SheepSpawnTimer()
     {
         canSpawnSheep = false;
@@ -63,7 +71,6 @@ public class SheepManager : MonoBehaviour
 
     void SpawnThisSheepAt(Sheep.SheepType type, Vector2 spawn)
     {
-        Debug.Log(type);
         GameObject sheepObject = sheepPrefabs[(int)type];
         GameObject newSheep = Instantiate(sheepObject, this.gameObject.transform);
         newSheep.transform.position = spawn;

@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 032fa5a03c823f24a994de7a3c701c54, type: 2}
     - target: {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
       propertyPath: m_Name
-      value: BrownSheep 1
+      value: BrownSheep
       objectReference: {fileID: 0}
     - target: {fileID: 7116372900968439889, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55,6 +55,18 @@ PrefabInstance:
     - target: {fileID: 7116372900968439889, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8356395122070223353, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
+      propertyPath: m_Color.b
+      value: 0.18632075
+      objectReference: {fileID: 0}
+    - target: {fileID: 8356395122070223353, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
+      propertyPath: m_Color.g
+      value: 0.26008713
+      objectReference: {fileID: 0}
+    - target: {fileID: 8356395122070223353, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

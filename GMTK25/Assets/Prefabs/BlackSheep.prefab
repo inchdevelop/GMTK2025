@@ -154,6 +154,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8356395122070223353, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
+      propertyPath: m_Color.b
+      value: 0.16682982
+      objectReference: {fileID: 0}
+    - target: {fileID: 8356395122070223353, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
+      propertyPath: m_Color.g
+      value: 0.16682982
+      objectReference: {fileID: 0}
+    - target: {fileID: 8356395122070223353, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
+      propertyPath: m_Color.r
+      value: 0.21698111
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
