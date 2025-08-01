@@ -1,88 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.U2D;
+using static UnityEngine.ParticleSystem;
 
-public class playerLineCreation : MonoBehaviour
+public class playercreateLassoCreation : MonoBehaviour
 {
 
     public GameObject lasso;
     public GameObject player;
-    private SpriteShapeController sprite;
-    private Spline spline;
-    private PolygonCollider2D spritetri;
-    public float timer;
-    public float timer2;
-    public float timeadj;
 
-    public int count = 0;
+    public int maxPoints = 30;
+    public float minDist = 0.75f;
+    public float pointCheck = 0.5f;
+    public List<Vector2> pointList;
+    Vector3 pastPos;
+    public List<Vector2> tempList;
 
     // Start is called before the first frame update
     void Start()
     {
-        sprite = GetComponent<SpriteShapeController>();
-        spline = sprite.spline;
-        spritetri = GetComponent<PolygonCollider2D>();
-        count = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        timer2 += Time.deltaTime;
-
-        if (timer2 >= timeadj)
+        if (Vector2.Distance(player.transform.position, pastPos) > minDist)
         {
-            //spritetri.points.SetValue(player.gameObject.transform.position, count);
-            count++;
-            GameObject newball = Instantiate(lasso);
-            newball.transform.position = player.transform.position;
-            Destroy(newball,timer);
-            //spline.InsertPointAt(count, player.transform.position);
-            //StartCoroutine(doggyLine());
-            timer2 = 0;
+            pointList.Add(player.transform.position);
+
+            pastPos = player.transform.position;
         }
 
-        //if (count == 2)
-        //{
-        //    spline.SetPosition(0, new Vector2(0, 50));
-        //    spline.SetPosition(1, new Vector2(0, 51));
-        //}
-    }
-
-    IEnumerator doggyLine()
-    {
-        //int beforecount = spline.GetPointCount();
-        //yield return new WaitForSeconds(3);
-        //Debug.Log("goal" + beforecount);
-        //for (int i = 0; i < beforecount; i++)
-        //{
-        //    Debug.Log("rahh" + i);
-        //    spline.RemovePointAt(i);
-        //    //spline.SetPosition(i, player.transform.position);
-        //}
-        //count = 0;
-        yield return new WaitForSeconds(timer);
-
-        spline.RemovePointAt(0);
-
-        count = spline.GetPointCount() - 1;
-
-        if (count == 1)
+        if (pointList.Count >= 4) 
         {
-            spline.SetPosition(0, player.transform.position);
-            spline.SetPosition(1, player.transform.position * 0.9f);
+            checkConnect();
         }
 
+
+        if (pointList.Count > maxPoints)
+        {
+            pointList.RemoveAt(0);
+        }
     }
 
-    IEnumerator line()
+    void createLasso()
     {
-        yield return new WaitForSeconds(0.5f);
+        GameObject newShape = Instantiate(lasso);
+        newShape.GetComponent<PolygonCollider2D>().enabled = true;
+        newShape.GetComponent<PolygonCollider2D>().SetPath(0, tempList);
 
-        count = spline.GetPointCount() - 1;
+        pointList.Clear();
+        tempList.Clear();
+    }
 
-        yield return null;
+    void checkConnect()
+    {        
+        for (int i = 0;i < pointList.Count-1;i++)
+        { 
+            for(int j = 0; j < pointList.Count-1; j++)
+            {
+                if (Vector2.Distance(pointList[i], pointList[j]) < pointCheck && i != j)
+                {
+                    for (int k = i; k <= j; k++)
+                    {
+                        tempList.Add(pointList[k]);
+                    }
+                    createLasso();
+                }
+            }
+        }
     }
 }
