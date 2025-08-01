@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7207c0ea8eda44d4690274b999188be7, type: 3}
   m_Name: PinkSheepData
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 90f4ea6661452404199dc4691461b1ec, type: 3}
+  sprite: {fileID: 21300000, guid: 4ff6b9647d7f8d54e9724527062b30b0, type: 3}
   scoreValue: 0
   speed: 0.004
   moveInterval: 0.25
