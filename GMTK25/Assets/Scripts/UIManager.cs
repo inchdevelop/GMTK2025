@@ -51,15 +51,10 @@ public class UIManager : MonoBehaviour
 
     public void DashUI(int dashNum)
     {
-        foreach(Image image in dashes)
-        {
-            //image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
-        }
-        for(int i = 0; i < dashNum; i++)
-        {
-            //dashes[i].color = new Color(dashes[i].color.r, dashes[i].color.g, dashes[i].color.b, 1f);
+      
             dashesLeft.text = "x" + dashNum.ToString();
-        }
+            Debug.Log(dashesLeft.text);
+        
     }
 
     public void ComboUI(float comboNum)
