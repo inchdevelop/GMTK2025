@@ -10,13 +10,15 @@ public class playercreateLassoCreation : MonoBehaviour
 
     public GameObject lasso;
     public GameObject player;
+    public GameObject line;
 
-    public int maxPoints = 30;
-    public float minDist = 0.75f;
-    public float pointCheck = 0.5f;
+    public int maxPoints = 100;
+    public float minDist = 0.25f;
+    public float pointCheck = 0.2f;
     public List<Vector2> pointList;
     Vector3 pastPos;
     public List<Vector2> tempList;
+    public List<GameObject> lineList;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,11 @@ public class playercreateLassoCreation : MonoBehaviour
         {
             pointList.Add(player.transform.position);
 
+            GameObject newLine = Instantiate(line);
+            newLine.transform.position = player.transform.position;
+            newLine.transform.rotation = player.transform.rotation;
+            lineList.Add(newLine);
+
             pastPos = player.transform.position;
         }
 
@@ -42,6 +49,8 @@ public class playercreateLassoCreation : MonoBehaviour
         if (pointList.Count > maxPoints)
         {
             pointList.RemoveAt(0);
+            Destroy(lineList[0]);
+            lineList.RemoveAt(0);
         }
     }
 
@@ -53,6 +62,12 @@ public class playercreateLassoCreation : MonoBehaviour
 
         pointList.Clear();
         tempList.Clear();
+        for (int i = 0; i < lineList.Count; i++)
+        {
+
+            Destroy(lineList[i]);
+        }
+        lineList.Clear();
     }
 
     void checkConnect()

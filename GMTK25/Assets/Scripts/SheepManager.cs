@@ -9,6 +9,7 @@ public class SheepManager : MonoBehaviour
     [SerializeField] List<GameObject> currentSheep;
 
     [SerializeField] BoxCollider2D spawnZone;
+    [SerializeField] BoxCollider2D spawnZone2;
 
     [SerializeField] int startSheep;
     [SerializeField] float spawnInterval;
@@ -133,6 +134,15 @@ public class SheepManager : MonoBehaviour
         Vector2 leftBounds;
         Vector2 rightBounds;
         Bounds bounds = spawnZone.bounds;
+        int rand = Random.Range(0, 2);
+        if (rand == 0)
+        {
+            bounds = spawnZone.bounds;
+        }
+        else if (rand == 1)
+        {
+            bounds = spawnZone2.bounds;
+        }
         leftBounds = new Vector2(bounds.center.x - bounds.extents.x, bounds.center.y - bounds.extents.y);
         rightBounds = new Vector2(bounds.center.x + bounds.extents.x, bounds.center.y  + bounds.extents.y);
         spawn = new Vector2( Random.Range(leftBounds.x, rightBounds.x),Random.Range(leftBounds.y, rightBounds.y));
