@@ -24,6 +24,7 @@ public class playerTutorial : MonoBehaviour
         {
             StartCoroutine(fadeAway());
         }
+
     }
 
     IEnumerator fadeAway()

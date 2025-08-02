@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class tutorialManager : MonoBehaviour
 {
-    public bool sheepFate = false;
+    public bool sheepFate = false;//first sheep herded
+    public bool bowlFate = false;//bowl watered
 
     public GameObject bowl;
+    public GameObject TutBowl;
+    public GameObject TutDash;
+
+    public GameObject sheepbutMore;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +26,20 @@ public class tutorialManager : MonoBehaviour
         {
             bowlTutor();
         }
+        if (bowlFate)
+        {
+            dashTutor();
+        }
     }
 
     void bowlTutor()
     { 
         bowl.SetActive(true);
+        TutBowl.SetActive(true);
+    }
+    void dashTutor()
+    {
+        TutDash.SetActive(true);
     }
 
 }
