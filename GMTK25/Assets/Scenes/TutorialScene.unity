@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x20
+  m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 222ecf7cd921c1245827951417be64c8, type: 2}
   m_sharedMaterial: {fileID: 4170873234524068412, guid: 222ecf7cd921c1245827951417be64c8, type: 2}
@@ -5974,7 +5974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0668ca5d0a40f244cbbd364ccd654340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashRecoveryInterval: 0.1
+  dashRecoveryInterval: 0.05
 --- !u!70 &2022252129
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
