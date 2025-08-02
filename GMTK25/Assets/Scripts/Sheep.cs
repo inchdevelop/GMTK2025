@@ -119,30 +119,30 @@ public class Sheep : MonoBehaviour
             targetPos = SheepManager.instance.GetRandomSpawnLocation();
 
 
-            //if (sheepSO.type != SheepType.GOLD)
-            //{
-            //    float closestSheep = 5;
-            //    Sheep theOne = null;
-            //    for (int i = 0; i < sheepList.Length; i++)
-            //    {
-            //        if (sheepList[i].gameObject.GetComponent<Sheep>().sheepSO.type == SheepType.GOLD)
-            //        {
-            //            Vector2 tempPos = sheepList[i].gameObject.transform.position;
-            //            float sheepDistance = Vector2.Distance(transform.position, tempPos);
-            //            if (sheepDistance <= 5f && sheepDistance < closestSheep)
-            //            {
-            //                closestSheep = sheepDistance;
-            //                theOne = sheepList[i].gameObject.GetComponent<Sheep>();
-            //            }
-            //        }
-            //    }
+            if (sheepSO.type != SheepType.GOLD)
+            {
+                float closestSheep = 5;
+                Sheep theOne = null;
+                for (int i = 0; i < sheepList.Length; i++)
+                {
+                    if (sheepList[i].gameObject.GetComponent<Sheep>().sheepSO.type == SheepType.GOLD)
+                    {
+                        Vector2 tempPos = sheepList[i].gameObject.transform.position;
+                        float sheepDistance = Vector2.Distance(transform.position, tempPos);
+                        if (sheepDistance <= 5f && sheepDistance < closestSheep)
+                        {
+                            closestSheep = sheepDistance;
+                            theOne = sheepList[i].gameObject.GetComponent<Sheep>();
+                        }
+                    }
+                }
 
-            //    if(theOne != null)
-            //    {
-            //        targetPos = theOne.transform.position;
-            //        done = true;
-            //    }
-            //}
+                if (theOne != null)
+                {
+                    targetPos = theOne.transform.position;
+                    done = true;
+                }
+            }
 
             //if (sheepSO.type != SheepType.BLACK && !done)
             //{
