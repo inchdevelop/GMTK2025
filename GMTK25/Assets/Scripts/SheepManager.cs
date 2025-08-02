@@ -100,6 +100,7 @@ public class SheepManager : MonoBehaviour
     Sheep.SheepType GetRandomSheepType()
     {
         Sheep.SheepType type = sheepPrefabs[Random.Range(0, sheepPrefabs.Length)].GetComponent<Sheep>().sheepSO.type;
+        Debug.Log(type);
         return type;
     }
 
