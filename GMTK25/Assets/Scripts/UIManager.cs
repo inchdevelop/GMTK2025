@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] CanvasGroup gameOverUI;
     [SerializeField] TextMeshProUGUI scoreTF;
     [SerializeField] TextMeshProUGUI currentScoreTF;
+    [SerializeField] Animator currentScoreAnimator;
 
     [SerializeField] Image[] dashes;
     [SerializeField] Image[] combos;
@@ -76,6 +77,7 @@ public class UIManager : MonoBehaviour
 
     public void ScoreUI(int score)
     {
+        currentScoreAnimator.Play("ScoreIncrease");
         currentScoreTF.text = score.ToString();
     }
 

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: sheepSO
       value: 
       objectReference: {fileID: 11400000, guid: 94af14a7714aace46a96b1bf79c3424f, type: 2}
+    - target: {fileID: 3743093141259535527, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
+      propertyPath: m_Mass
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
       propertyPath: m_Name
       value: FatSheep

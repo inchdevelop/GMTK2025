@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 
     void ScoreIncrease(int score)
     {
-        totalScore += score;
+        totalScore += score * scoreMult;
         UIManager.instance.ScoreUI(totalScore);
     }
 
