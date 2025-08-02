@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.U2D;
 using static UnityEngine.ParticleSystem;
@@ -40,7 +41,7 @@ public class playercreateLassoCreation : MonoBehaviour
             pastPos = player.transform.position;
         }
 
-        if (pointList.Count >= 4) 
+        if (pointList.Count >= 4)
         {
             checkConnect();
         }
@@ -51,6 +52,11 @@ public class playercreateLassoCreation : MonoBehaviour
             pointList.RemoveAt(0);
             Destroy(lineList[0]);
             lineList.RemoveAt(0);
+        }
+
+        for (int i = 0; i < lineList.Count; i++)
+        {
+            lineList[i].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, (float)i / lineList.Count);
         }
     }
 
@@ -71,10 +77,10 @@ public class playercreateLassoCreation : MonoBehaviour
     }
 
     void checkConnect()
-    {        
-        for (int i = 0;i < pointList.Count-1;i++)
-        { 
-            for(int j = 0; j < pointList.Count-1; j++)
+    {
+        for (int i = 0; i < pointList.Count - 1; i++)
+        {
+            for (int j = 0; j < pointList.Count - 1; j++)
             {
                 if (Vector2.Distance(pointList[i], pointList[j]) < pointCheck && i != j)
                 {
