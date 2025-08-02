@@ -427,11 +427,11 @@ MonoBehaviour:
   drag: 1.25
   defaultDrag: 1.25
   dragFall: 0.75
-  dragMax: 0.25
+  dragMax: 0.5
   defaultSpeed: 7.5
-  rotationSpeed: 250
+  rotationSpeed: 600
   speed: 7.5
-  dashSpeed: 15
+  dashSpeed: 12
   speedFall: 8
   currentState: 0
 --- !u!50 &72783010
@@ -1932,8 +1932,8 @@ MonoBehaviour:
   - {fileID: 7033028572942249631, guid: d459f3239d2c20740ae28e8bfa3e66ba, type: 3}
   currentSheep: []
   spawnZone: {fileID: 1081144921}
-  startSheep: 0
-  spawnInterval: 1000
+  startSheep: 10
+  spawnInterval: 2
 --- !u!4 &695531142
 Transform:
   m_ObjectHideFlags: 0
