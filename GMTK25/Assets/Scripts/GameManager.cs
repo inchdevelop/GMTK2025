@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         playerInput.onPlayerDash += PlayerDash;
-        playerInput.onPlayerDash += MultIncrease;
         playerInput.onPlayerPause += PlayerPause;
 
         Sheep.onSheepCollide += PlayerDash;
@@ -44,13 +43,12 @@ public class GameManager : MonoBehaviour
         SheepManager.onGameOver += GameOver;
 
         lassoDetect.onSheepCollected += ScoreIncrease;
-        //lassoDetect.onSheepCollected += MultIncrease;
+        lassoDetect.onLassoCollect += MultIncrease;
     }
 
     private void OnDisable()
     {
         playerInput.onPlayerDash -= PlayerDash;
-        playerInput.onPlayerDash -= MultIncrease;
         playerInput.onPlayerPause -= PlayerPause;
         
         Sheep.onSheepCollide -= PlayerDash;
@@ -61,6 +59,7 @@ public class GameManager : MonoBehaviour
         SheepManager.onGameOver -= GameOver;
 
         lassoDetect.onSheepCollected -= ScoreIncrease;
+        lassoDetect.onLassoCollect -= MultIncrease;
     }
 
     private void Update()
@@ -101,6 +100,7 @@ public class GameManager : MonoBehaviour
 
     void MultIncrease()
     {
+        Debug.Log("comboing");
         scoreMult *= 2;
         if(scoreMult > maxMult)
             scoreMult = maxMult;
