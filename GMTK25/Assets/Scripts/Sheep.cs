@@ -112,7 +112,6 @@ public class Sheep : MonoBehaviour
 
         //read type of sheep prob 
         bool canMove = false;
-        bool done = false;
         while (!canMove)
         {
             canMove = true;

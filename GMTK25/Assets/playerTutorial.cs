@@ -10,7 +10,6 @@ public class playerTutorial : MonoBehaviour
     Vector3 pastPos;
     public TMP_Text top;
     public TMP_Text bottom;
-    float color = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,10 +28,8 @@ public class playerTutorial : MonoBehaviour
 
     IEnumerator fadeAway()
     {
-        top.GetComponent<Rigidbody2D>().gravityScale = 0;
-        top.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10,10));
-        bottom.GetComponent<Rigidbody2D>().gravityScale = 0;
-        bottom.GetComponent<Rigidbody2D>().AddForce(new Vector2(650, -500));
+        top.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1000,0) * Time.deltaTime * 10);
+        bottom.GetComponent<Rigidbody2D>().AddForce(new Vector2(1000, 0) * Time.deltaTime * 10);
         yield return null;
     }
 }

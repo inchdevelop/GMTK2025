@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dogbowl : MonoBehaviour
 {
     [SerializeField] float dashRecoveryInterval;
-   bool canRecover = true;
+    bool canRecover = true;
     public delegate void OnDashRecovery();
     public static event OnDashRecovery onDashRecovery;
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,7 +25,7 @@ public class Dogbowl : MonoBehaviour
     {
         if(!collision.gameObject.CompareTag("Player"))
             return;
-        canRecover = false;
+        canRecover = true;
     }
 
     public IEnumerator DogbowlTimer()

@@ -11,6 +11,7 @@ public class lassoDetect : MonoBehaviour
     public delegate void OnLassoCollect();
     public static event OnLassoCollect onLassoCollect;
     int sheepCount = 0;
+    public bool tutorial = false;
 
     [SerializeField] List<GameObject> sheepList;
 
@@ -36,9 +37,19 @@ public class lassoDetect : MonoBehaviour
     IEnumerator killCode()
     {
         yield return new WaitForSeconds(.25f);
-        Debug.Log(sheepCount);
-        CollectSheep();
-        Destroy(gameObject);
+        if (tutorial)
+        {
+            Debug.Log("SHEEP");
+            GameObject.FindGameObjectWithTag("tutor").gameObject.GetComponent<tutorialManager>().sheepFate = true;
+            tutorSheep();
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log(sheepCount);
+            CollectSheep();
+            Destroy(gameObject);
+        }
     }
 
     void CollectSheep()
@@ -58,6 +69,18 @@ public class lassoDetect : MonoBehaviour
         }
         //destroys sheep 
         for(int i = 0; i < sheepList.Count; i++)
+        {
+            SheepManager.instance.DestroySheep(sheepList[i]);
+            sheepList.Remove(sheepList[i]);
+        }
+        sheepList.Clear();
+    }
+    void tutorSheep()
+    {
+        if (sheepList.Count <= 0)
+            return;
+        //destroys sheep 
+        for (int i = 0; i < sheepList.Count; i++)
         {
             SheepManager.instance.DestroySheep(sheepList[i]);
             sheepList.Remove(sheepList[i]);
