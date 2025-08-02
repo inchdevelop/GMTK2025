@@ -63,10 +63,10 @@ public class Sheep : MonoBehaviour
                 MoveSheep();
                 break;
             case SheepMovement.FOLLOW:
-                MoveBrownSheep();
+                SheepFollowTarget();
                 break;
             case SheepMovement.FLEE:
-                MoveBrownSheep();
+                SheepFollowTarget();
                 break;
         };
     }
@@ -84,34 +84,17 @@ public class Sheep : MonoBehaviour
         //Debug.Log("moving" + gameObject.name);
         switch(sheepSO.type)
         {
-            case SheepType.WHITE:
-                MoveWhiteSheep();
-                break;
-            case SheepType.BLACK:
-                MoveWhiteSheep();
-                break;
-            case SheepType.GOLD:
-                MoveWhiteSheep();
-                break;
-            case SheepType.FAT:
-                MoveWhiteSheep();
-                break;
-            case SheepType.PINK:
-                MoveWhiteSheep();
-                break;
-            case SheepType.RED:
-                MoveWhiteSheep();
-                break;
+      
             case SheepType.BROWN:
-                MoveBrownSheep();
+                SheepFollowTarget(GameObject.FindGameObjectWithTag("Player").transform.position);
                 break;
-            case SheepType.BLUE:
-                MoveWhiteSheep();
+            default:
+                SheepRandomMove();
                 break;
         }
     }
 
-    public void MoveWhiteSheep()
+    public void SheepRandomMove()
     {
         transform.position = Vector2.Lerp(transform.position, targetPos, sheepSO.speed);
         RotateToNewPos(gameObject.transform.position, targetPos);
@@ -149,13 +132,17 @@ public class Sheep : MonoBehaviour
         Gizmos.DrawLine(transform.position, targetPos);
     }
 
-    public void MoveBrownSheep()
+    public void SheepFollowTarget()
     { 
-        
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, player.transform.position, sheepSO.speed * Time.deltaTime);
-        
-        RotateToNewPos(gameObject.transform.position, player.transform.position);
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, targetPos, sheepSO.speed * Time.deltaTime);
+        RotateToNewPos(gameObject.transform.position, targetPos);
+    }
+
+    public void SheepFollowTarget(Vector3 target)
+    {
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, target, sheepSO.speed * Time.deltaTime);
+
+        RotateToNewPos(gameObject.transform.position, target);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

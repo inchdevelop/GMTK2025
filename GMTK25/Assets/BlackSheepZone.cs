@@ -40,6 +40,7 @@ public class BlackSheepZone : MonoBehaviour
             return;
         if (collision.gameObject.GetComponent<Sheep>().sheepSO.type == Sheep.SheepType.BLACK)
             return;
+
         collision.gameObject.GetComponent<Sheep>().currentState = Sheep.SheepMovement.MOVE;
     }
 }
