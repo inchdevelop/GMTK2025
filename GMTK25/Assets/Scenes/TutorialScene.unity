@@ -478,6 +478,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 1552430615}
   scoreTF: {fileID: 387163787}
   currentScoreTF: {fileID: 424235193}
+  currentScoreAnimator: {fileID: 424235194}
   dashes:
   - {fileID: 1289152010}
   - {fileID: 812071914}
@@ -1127,6 +1128,7 @@ GameObject:
   - component: {fileID: 424235191}
   - component: {fileID: 424235192}
   - component: {fileID: 424235193}
+  - component: {fileID: 424235194}
   m_Layer: 5
   m_Name: Current Score Text
   m_TagString: Untagged
@@ -1250,6 +1252,27 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &424235194
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424235190}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a39b4124b1a1df44d9876ee9e6789f01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &434761363
 GameObject:
   m_ObjectHideFlags: 0
