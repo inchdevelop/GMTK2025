@@ -35,7 +35,7 @@ public class lassoDetect : MonoBehaviour
 
     IEnumerator killCode()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.25f);
         Debug.Log(sheepCount);
         CollectSheep();
         Destroy(gameObject);
@@ -43,6 +43,8 @@ public class lassoDetect : MonoBehaviour
 
     void CollectSheep()
     {
+        if (sheepList.Count <= 0)
+            return;
         //collects sheep
         for (int i = 0; i < sheepList.Count; i++)
         {
@@ -57,8 +59,8 @@ public class lassoDetect : MonoBehaviour
         //destroys sheep 
         for(int i = 0; i < sheepList.Count; i++)
         {
+            SheepManager.instance.DestroySheep(sheepList[i]);
             sheepList.Remove(sheepList[i]);
-            SheepManager.instance.DestroySheep(sheepList[i]);   
         }
         sheepList.Clear();
     }

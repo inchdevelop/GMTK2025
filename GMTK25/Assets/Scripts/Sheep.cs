@@ -223,8 +223,8 @@ public class Sheep : MonoBehaviour
         }
         else
         {
-            onSheepKnockUp?.Invoke(gameObject);
-            SheepKnockUp();
+          //  onSheepKnockUp?.Invoke(gameObject);
+          //  SheepKnockUp();
         }
 
     }
