@@ -18,6 +18,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int numDashes;
     [SerializeField] int maxDashes;
+
+    [Header("Sounds")]
+    [SerializeField] AudioClip dashSound;
+    [SerializeField] AudioClip loopSound;
+    [SerializeField] AudioClip gameOverSound;
+    [SerializeField] AudioClip dashRecoverSound;
+    [SerializeField] AudioClip sheepHitSound;
     public static GameManager instance;
 
     [SerializeField] public int maxSheep = 20;
@@ -34,32 +41,42 @@ public class GameManager : MonoBehaviour
     {
         playerInput.onPlayerDash += PlayerDash;
         playerInput.onPlayerPause += PlayerPause;
+        playerInput.onPlayerDash += PlayDash;
 
         Sheep.onSheepCollide += PlayerDash;
+        Sheep.onSheepCollide += PlaySheepHit;
         Sheep.onSheepKnockUp += SheepKnockedUp;
 
         Dogbowl.onDashRecovery += DashRecovery;
+        Dogbowl.onDashRecovery += PlayWaterbowl;
         
         SheepManager.onGameOver += GameOver;
+        SheepManager.onGameOver += PlayGameOver;
 
         lassoDetect.onSheepCollected += ScoreIncrease;
         lassoDetect.onLassoCollect += MultIncrease;
+        lassoDetect.onLassoCollect += PlayLoop;
     }
 
     private void OnDisable()
     {
         playerInput.onPlayerDash -= PlayerDash;
         playerInput.onPlayerPause -= PlayerPause;
+        playerInput.onPlayerDash -= PlayDash;
         
         Sheep.onSheepCollide -= PlayerDash;
+        Sheep.onSheepCollide-= PlaySheepHit;
         Sheep.onSheepKnockUp -= SheepKnockedUp;
 
         Dogbowl.onDashRecovery -= DashRecovery;
+        Dogbowl.onDashRecovery -= PlayWaterbowl;
 
         SheepManager.onGameOver -= GameOver;
+        SheepManager.onGameOver -= PlayGameOver;
 
         lassoDetect.onSheepCollected -= ScoreIncrease;
         lassoDetect.onLassoCollect -= MultIncrease;
+        lassoDetect.onLassoCollect -= PlayLoop;
     }
 
     private void Update()
@@ -149,5 +166,30 @@ public class GameManager : MonoBehaviour
     public void SheepKnockedUp(GameObject sheep)
     {
         SheepManager.instance.DeleteSheep(sheep);
+    }
+
+    void PlayDash()
+    {
+        AudioSource.PlayClipAtPoint(dashSound, Camera.main.transform.position);
+    }
+
+    void PlayWaterbowl()
+    {
+        AudioSource.PlayClipAtPoint(dashRecoverSound, Camera.main.transform.position);
+    }
+
+    void PlayGameOver()
+    {
+        AudioSource.PlayClipAtPoint(gameOverSound, Camera.main.transform.position);
+    }
+
+    void PlayLoop()
+    {
+        AudioSource.PlayClipAtPoint(loopSound, Camera.main.transform.position);
+    }
+
+    void PlaySheepHit()
+    {
+        AudioSource.PlayClipAtPoint(sheepHitSound, Camera.main.transform.position);
     }
 }

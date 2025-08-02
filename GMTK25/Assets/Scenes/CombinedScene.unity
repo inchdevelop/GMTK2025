@@ -2104,6 +2104,11 @@ MonoBehaviour:
   comboUp: 0
   numDashes: 5
   maxDashes: 5
+  dashSound: {fileID: 8300000, guid: 361a6d385654a5246a36f720fd446b75, type: 3}
+  loopSound: {fileID: 8300000, guid: a67139a765f7b8b43832f88573a71bcd, type: 3}
+  gameOverSound: {fileID: 8300000, guid: 719f08a1b6ee7c44bba4525efc762af4, type: 3}
+  dashRecoverSound: {fileID: 8300000, guid: ecdb3287dc12a4546b961748a1272403, type: 3}
+  sheepHitSound: {fileID: 8300000, guid: 255c123aaba90a94390ebd8a85850824, type: 3}
   maxSheep: 55
 --- !u!1 &812054751
 GameObject:
@@ -2821,6 +2826,7 @@ MonoBehaviour:
   - {fileID: 7033028572942249631, guid: d459f3239d2c20740ae28e8bfa3e66ba, type: 3}
   currentSheep: []
   spawnZone: {fileID: 1236970229}
+  spawnZone2: {fileID: 0}
   startSheep: 10
   spawnInterval: 10
 --- !u!4 &1186514744
@@ -3286,6 +3292,8 @@ MonoBehaviour:
   pauseUI: {fileID: 1553308494}
   gameOverUI: {fileID: 2138946529}
   scoreTF: {fileID: 1989764338}
+  currentScoreTF: {fileID: 0}
+  currentScoreAnimator: {fileID: 0}
   dashes:
   - {fileID: 855810040}
   - {fileID: 975451154}
@@ -3694,11 +3702,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lasso: {fileID: 3095688112354963064, guid: 4436f8f95c62eab49b4037bf751cab6b, type: 3}
   player: {fileID: 464353400}
+  line: {fileID: 0}
   maxPoints: 100
   minDist: 0.25
   pointCheck: 0.2
   pointList: []
   tempList: []
+  lineList: []
 --- !u!4 &1881398128
 Transform:
   m_ObjectHideFlags: 0
