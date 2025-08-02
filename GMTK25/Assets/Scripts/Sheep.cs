@@ -14,8 +14,8 @@ public class Sheep : MonoBehaviour
     [SerializeField] GameObject sprite;
 
     [SerializeField] public Vector3 targetPos;
-    [SerializeField] Quaternion targetRot;
-    [SerializeField] float rotSpeed;
+    [SerializeField] float followSpeed;
+    [SerializeField] float fleeSpeed;
     bool moveTimer = true;
 
     [SerializeField] public SheepMovement currentState = SheepMovement.MOVE;
@@ -36,7 +36,8 @@ public class Sheep : MonoBehaviour
     {
         MOVE,
         FOLLOW,
-        FLEE
+        FLEE,
+        ANIMATE
     }
 
     public delegate void OnSheepCollide();
@@ -57,16 +58,18 @@ public class Sheep : MonoBehaviour
     {
         switch(currentState)
         {
+            case SheepMovement.ANIMATE:
+                return;
             case SheepMovement.MOVE:
                 if (moveTimer)
                     StartCoroutine(MoveTimer());
                 MoveSheep();
                 break;
             case SheepMovement.FOLLOW:
-                SheepFollowTarget();
+                SheepFollowTarget(followSpeed);
                 break;
             case SheepMovement.FLEE:
-                SheepFollowTarget();
+                SheepFollowTarget(fleeSpeed);
                 break;
         };
     }
@@ -86,7 +89,7 @@ public class Sheep : MonoBehaviour
         {
       
             case SheepType.BROWN:
-                SheepFollowTarget(GameObject.FindGameObjectWithTag("Player").transform.position);
+                SheepFollowTarget(GameObject.FindGameObjectWithTag("Player").transform.position, sheepSO.speed);
                 break;
             default:
                 SheepRandomMove();
@@ -96,7 +99,7 @@ public class Sheep : MonoBehaviour
 
     public void SheepRandomMove()
     {
-        transform.position = Vector2.Lerp(transform.position, targetPos, sheepSO.speed);
+        transform.position = Vector2.Lerp(transform.position, targetPos, sheepSO.speed * Time.deltaTime);
         RotateToNewPos(gameObject.transform.position, targetPos);
     }
 
@@ -113,7 +116,7 @@ public class Sheep : MonoBehaviour
             if (!spawnBuffer.bounds.Contains(targetPos))
                 canMove = false;
         }
-        
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 
     void RotateToNewPos(Vector3 oldPos, Vector3 newPos)
@@ -138,9 +141,15 @@ public class Sheep : MonoBehaviour
         RotateToNewPos(gameObject.transform.position, targetPos);
     }
 
-    public void SheepFollowTarget(Vector3 target)
+    public void SheepFollowTarget(float theSpeed)
     {
-        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, target, sheepSO.speed * Time.deltaTime);
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, targetPos, theSpeed * Time.deltaTime);
+        RotateToNewPos(gameObject.transform.position, targetPos);
+    }
+
+    public void SheepFollowTarget(Vector3 target, float theSpeed)
+    {
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, target, theSpeed * Time.deltaTime);
 
         RotateToNewPos(gameObject.transform.position, target);
     }
@@ -172,6 +181,7 @@ public class Sheep : MonoBehaviour
     public void SheepKnockUp()
     {
         sheepAnimator.Play("SheepKnockUp");
+        currentState = Sheep.SheepMovement.ANIMATE;
     }
 
     public void SheepDestroy()

@@ -31,7 +31,7 @@ public class GoldSheepZone : MonoBehaviour
         collision.gameObject.GetComponent<Sheep>().currentState = Sheep.SheepMovement.FOLLOW;
         collision.gameObject.GetComponent<Sheep>().targetPos = awayPos;
 
-        Debug.Log(collision.gameObject.name + " following " + awayPos);
+        //Debug.Log(collision.gameObject.name + " following " + awayPos);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

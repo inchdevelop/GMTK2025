@@ -66,7 +66,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 5, y: 2}
+  m_Size: {x: 4, y: 2}
   m_Direction: 0
 --- !u!114 &8804953607787207835
 MonoBehaviour:
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c981c20cc02e1fc4eb5ba413d262095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneForce: 100
+  zoneForce: 2000
   blackSheepZone: {fileID: 2601191709728612842}
 --- !u!1001 &3373335473296898055
 PrefabInstance:
