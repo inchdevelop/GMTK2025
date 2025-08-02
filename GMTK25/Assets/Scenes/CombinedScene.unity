@@ -2814,7 +2814,7 @@ MonoBehaviour:
   currentSheep: []
   spawnZone: {fileID: 1236970229}
   startSheep: 10
-  spawnInterval: 1
+  spawnInterval: 10
 --- !u!4 &1186514744
 Transform:
   m_ObjectHideFlags: 0
@@ -3848,11 +3848,11 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2
+  m_Time: 4
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
