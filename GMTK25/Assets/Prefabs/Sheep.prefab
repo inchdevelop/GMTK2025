@@ -90,9 +90,10 @@ MonoBehaviour:
   sheepSO: {fileID: 11400000, guid: a319ce85eaaced24fb5ca4b526871033, type: 2}
   sheepAnimator: {fileID: 2686518684630902743}
   sprite: {fileID: 8872694060684663730}
-  targetPos: {x: 0, y: 0}
+  targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
-  rotSpeed: 1000
+  rotSpeed: 0.25
+  currentState: 0
 --- !u!50 &3743093141259535527
 Rigidbody2D:
   serializedVersion: 4

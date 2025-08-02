@@ -25,9 +25,21 @@ public class BlackSheepZone : MonoBehaviour
         if (collision.gameObject.GetComponent<Sheep>().sheepSO.type == Sheep.SheepType.BLACK)
             return;
 
-        Vector3 forceDirection = (gameObject.transform.position - collision.gameObject.transform.position).normalized;
+        Vector3 awayDirection = ((gameObject.transform.position - collision.gameObject.transform.position) * -1 * zoneForce).normalized;
+        Vector3 awayPos = collision.gameObject.transform.position + awayDirection;
 
-        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * -zoneForce * Time.deltaTime);
-        //Debug.Log("Adding force " + forceDirection + " to " + collision.gameObject.name);
+        collision.gameObject.GetComponent<Sheep>().currentState = Sheep.SheepMovement.FLEE;
+        collision.gameObject.GetComponent<Sheep>().targetPos = awayPos;
+
+        Debug.Log(collision.gameObject.name + " following " + awayPos);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Sheep"))
+            return;
+        if (collision.gameObject.GetComponent<Sheep>().sheepSO.type == Sheep.SheepType.BLACK)
+            return;
+        collision.gameObject.GetComponent<Sheep>().currentState = Sheep.SheepMovement.MOVE;
     }
 }

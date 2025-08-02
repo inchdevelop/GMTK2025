@@ -13,10 +13,12 @@ public class Sheep : MonoBehaviour
     [SerializeField] public Animator sheepAnimator;
     [SerializeField] GameObject sprite;
 
-    [SerializeField] public Vector2 targetPos;
+    [SerializeField] public Vector3 targetPos;
     [SerializeField] Quaternion targetRot;
     [SerializeField] float rotSpeed;
     bool moveTimer = true;
+
+    [SerializeField] public SheepMovement currentState = SheepMovement.MOVE;
     public enum SheepType
     {
         WHITE,
@@ -37,7 +39,6 @@ public class Sheep : MonoBehaviour
         FLEE
     }
 
-
     public delegate void OnSheepCollide();
     public static event OnSheepCollide onSheepCollide;
 
@@ -54,11 +55,20 @@ public class Sheep : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveSheep();
-        if(moveTimer)
+        switch(currentState)
         {
-            StartCoroutine(MoveTimer());
-        }
+            case SheepMovement.MOVE:
+                if (moveTimer)
+                    StartCoroutine(MoveTimer());
+                MoveSheep();
+                break;
+            case SheepMovement.FOLLOW:
+                MoveBrownSheep();
+                break;
+            case SheepMovement.FLEE:
+                MoveBrownSheep();
+                break;
+        };
     }
 
     public IEnumerator MoveTimer()
@@ -123,21 +133,15 @@ public class Sheep : MonoBehaviour
         
     }
 
-    //DOESNT WORK RN
     void RotateToNewPos(Vector3 oldPos, Vector3 newPos)
     {
         Vector2 targetDirection = (transform.position - newPos).normalized;
 
         float angle = (Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg) - 90f;
-      
-        gameObject.transform.eulerAngles = new Vector3(0, 0, angle);
-        
-       // Quaternion targetRotation = Quaternion.LookRotation(transform.forward,targetDirection);
-       
-        //Quaternion newRotation = Quaternion.RotateTowards(sprite.transform.rotation, targetRotation, rotSpeed  * Time.deltaTime);
-        //Debug.Log("targetRotation is " + newRotation);
+        Vector3 newAngle = new Vector3(0, 0, angle);
 
-       // gameObject.GetComponent<Rigidbody2D>().MoveRotation(newRotation);
+        gameObject.transform.eulerAngles = newAngle;
+       
     }
 
     private void OnDrawGizmos()
