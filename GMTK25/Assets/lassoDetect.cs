@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class lassoDetect : MonoBehaviour
 {
-
+    public delegate void OnSheepCollected(int score);
+    public static event OnSheepCollected onSheepCollected;
     int sheepCount = 0;
 
     // Start is called before the first frame update
@@ -24,6 +25,7 @@ public class lassoDetect : MonoBehaviour
         if (collider.tag == "Sheep")
         {
             sheepCount++;
+            onSheepCollected?.Invoke(collider.gameObject.GetComponent<Sheep>().sheepSO.scoreValue);
             SheepManager.instance.DestroySheep(collider.gameObject);
         }
     }

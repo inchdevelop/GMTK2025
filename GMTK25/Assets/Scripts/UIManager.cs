@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] CanvasGroup pauseUI;
     [SerializeField] CanvasGroup gameOverUI;
     [SerializeField] TextMeshProUGUI scoreTF;
+    [SerializeField] TextMeshProUGUI currentScoreTF;
 
     [SerializeField] Image[] dashes;
     [SerializeField] Image[] combos;
@@ -71,6 +72,11 @@ public class UIManager : MonoBehaviour
                 combos[i].color = new Color(combos[i].color.r, combos[i].color.g, combos[i].color.b, 1f);
             }
         }
+    }
+
+    public void ScoreUI(int score)
+    {
+        currentScoreTF.text = score.ToString();
     }
 
 }

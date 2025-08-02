@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
         Dogbowl.onDashRecovery += DashRecovery;
         
         SheepManager.onGameOver += GameOver;
+
+        lassoDetect.onSheepCollected += ScoreIncrease;
+        //lassoDetect.onSheepCollected += MultIncrease;
     }
 
     private void OnDisable()
@@ -56,6 +59,8 @@ public class GameManager : MonoBehaviour
         Dogbowl.onDashRecovery -= DashRecovery;
 
         SheepManager.onGameOver -= GameOver;
+
+        lassoDetect.onSheepCollected -= ScoreIncrease;
     }
 
     private void Update()
@@ -85,6 +90,14 @@ public class GameManager : MonoBehaviour
         UIManager.instance.DashUI(numDashes);
         
     }
+
+    void ScoreIncrease(int score)
+    {
+        totalScore += score;
+        UIManager.instance.ScoreUI(totalScore);
+    }
+
+
 
     void MultIncrease()
     {

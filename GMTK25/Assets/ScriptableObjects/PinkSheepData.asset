@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PinkSheepData
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 4ff6b9647d7f8d54e9724527062b30b0, type: 3}
-  scoreValue: 0
+  scoreValue: 200
   speed: 2
   moveInterval: 0.5
   type: 4
