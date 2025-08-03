@@ -15,6 +15,9 @@ public class playerInput : MonoBehaviour
     public float dashSpeed = 20; //speed mult for dog
     public float speedFall = 0.2f; //speed fall off for dog
 
+    [SerializeField] GameObject thirstParticle;
+    [SerializeField] ParticleSystem dustParticleSystem;
+
     public DogStates currentState;
 
     public delegate void OnPlayerDash();
@@ -70,10 +73,14 @@ public class playerInput : MonoBehaviour
         if (speed >= dashSpeed*0.9f)
         {
             currentState = DogStates.DASH;
+            dustParticleSystem.gameObject.SetActive(true);
+            dustParticleSystem.Play();
+            StartCoroutine(dashParticle());
         }
         else
         {
             currentState = DogStates.RUN;
+            
         }
 
         //input pause
@@ -82,6 +89,7 @@ public class playerInput : MonoBehaviour
             onPlayerPause?.Invoke();
         }
 
+        
 
         //input wasd and arrows
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -114,13 +122,25 @@ public class playerInput : MonoBehaviour
 
         IEnumerator doggyDash()
         {
+            GameObject theParticle;
             if (GameManager.instance.CheckDash())
             {
                 speed = dashSpeed;
                 drag = dragMax;
                 onPlayerDash?.Invoke();
             }
+            else
+            {
+                theParticle = GameObject.Instantiate(thirstParticle, gameObject.transform);
+                Destroy(theParticle, .5f);
+            }
             yield return null;
+        }
+
+        IEnumerator dashParticle()
+        {
+            yield return new WaitForSeconds(1.25f);
+            dustParticleSystem.gameObject.SetActive(false);
         }
     }
 }

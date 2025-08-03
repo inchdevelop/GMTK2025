@@ -171,6 +171,7 @@ MonoBehaviour:
   sheepSO: {fileID: 11400000, guid: a319ce85eaaced24fb5ca4b526871033, type: 2}
   sheepAnimator: {fileID: 2686518684630902743}
   sprite: {fileID: 8872694060684663730}
+  angerParticle: {fileID: 4494113472180339628, guid: 00094c85ab1c9fa4ab6eadd202a7459e, type: 3}
   targetPos: {x: 0, y: 0, z: 0}
   followSpeed: 0.1
   fleeSpeed: 5

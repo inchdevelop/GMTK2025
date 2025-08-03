@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,6 +11,7 @@ public class Sheep : MonoBehaviour
     [SerializeField] public SheepSO sheepSO;
     [SerializeField] public Animator sheepAnimator;
     [SerializeField] GameObject sprite;
+    [SerializeField] GameObject angerParticle;
 
     [SerializeField] public Vector3 targetPos;
     [SerializeField] float followSpeed;
@@ -190,7 +189,9 @@ public class Sheep : MonoBehaviour
 
     public void SheepCollide()
     {
-        
+        Debug.Log("sheepCollide");
+        GameObject particle = Instantiate(angerParticle, gameObject.transform);
+        Destroy(particle, .25f);
     }
 
     public void SheepKnockUp()
