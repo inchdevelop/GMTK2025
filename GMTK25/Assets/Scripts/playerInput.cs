@@ -73,9 +73,6 @@ public class playerInput : MonoBehaviour
         if (speed >= dashSpeed*0.9f)
         {
             currentState = DogStates.DASH;
-            dustParticleSystem.gameObject.SetActive(true);
-            dustParticleSystem.Play();
-            StartCoroutine(dashParticle());
         }
         else
         {
@@ -128,6 +125,9 @@ public class playerInput : MonoBehaviour
                 speed = dashSpeed;
                 drag = dragMax;
                 onPlayerDash?.Invoke();
+                dustParticleSystem.gameObject.SetActive(true);
+                dustParticleSystem.Play();
+                StartCoroutine(dashParticle());
             }
             else
             {
@@ -139,7 +139,7 @@ public class playerInput : MonoBehaviour
 
         IEnumerator dashParticle()
         {
-            yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(1f);
             dustParticleSystem.gameObject.SetActive(false);
         }
     }

@@ -11,6 +11,7 @@ public class tutorialManager : MonoBehaviour
     public bool bowlFate = false;//bowl watered
     public bool dashFate = false;//dashing watered
     public bool once = true;//dashing watered
+    public bool twice = true;//dashing watered
 
     public GameObject bowl;
     public GameObject TutBowl;
@@ -54,9 +55,10 @@ public class tutorialManager : MonoBehaviour
         {
             StartCoroutine(fadeAway());
         }
-        if (sheepCounter >= 8)
+        if (sheepCounter >= 8 && twice == true)
         {
             finalTutor();
+            twice= false;
         }
     }
 
@@ -90,13 +92,12 @@ public class tutorialManager : MonoBehaviour
     }
     IEnumerator fadeIn()
     {
-        for (int i = 0; i < 255; i++)
+        for (int i = 0; i <= 255; i++)
         {
-            fadeinTut.color = new Color(0, 0, 0, (float)i/255);
+            fadeinTut.color = new Color(0, 0, 0, (float)i/255.0f);
             yield return new WaitForSeconds(0.01f);
         }
-
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene("PlayScene");
 
