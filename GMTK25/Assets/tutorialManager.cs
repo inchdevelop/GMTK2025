@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class tutorialManager : MonoBehaviour
 {
     public bool sheepFate = false;//first sheep herded
     public bool bowlFate = false;//bowl watered
+    public bool dashFate = false;//dashing watered
 
     public GameObject bowl;
     public GameObject TutBowl;
     public GameObject TutDash;
 
+    public TMP_Text top;
+    public TMP_Text bottom;
+
     public GameObject sheepbutMore;
+    public GameObject sheepbutMorespawn1;
+    public GameObject sheepbutMorespawn2;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +38,14 @@ public class tutorialManager : MonoBehaviour
         {
             dashTutor();
         }
+        if (bowlFate && sheepFate)
+        {
+            StartCoroutine(sheepAway());
+        }
+        if (bowlFate && sheepFate && GameObject.FindGameObjectWithTag("Player").GetComponent<playerInput>().currentState == playerInput.DogStates.DASH)
+        {
+            StartCoroutine(fadeAway());
+        }
     }
 
     void bowlTutor()
@@ -41,5 +57,17 @@ public class tutorialManager : MonoBehaviour
     {
         TutDash.SetActive(true);
     }
-
+    IEnumerator fadeAway()
+    {
+        top.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000) * Time.deltaTime * 10);
+        bottom.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1000) * Time.deltaTime * 10);
+        yield return null;
+    }
+    IEnumerator sheepAway()
+    {
+        yield return new WaitForSeconds(5f);
+        sheepbutMorespawn1.GetComponent<BoxCollider2D>().size = new Vector2(0.84f,0.59f);
+        sheepbutMorespawn1.GetComponent<BoxCollider2D>().size = new Vector2(0.45f, 0.84f);
+        yield return null;
+    }
 }

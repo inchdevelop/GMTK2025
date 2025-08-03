@@ -6129,10 +6129,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheepFate: 0
   bowlFate: 0
+  dashFate: 0
   bowl: {fileID: 2022252126}
   TutBowl: {fileID: 933372379}
   TutDash: {fileID: 493185734}
+  top: {fileID: 693030087}
+  bottom: {fileID: 477601500}
   sheepbutMore: {fileID: 1608319225}
+  sheepbutMorespawn1: {fileID: 1718032623}
+  sheepbutMorespawn2: {fileID: 275712745}
 --- !u!4 &1792833108
 Transform:
   m_ObjectHideFlags: 0
