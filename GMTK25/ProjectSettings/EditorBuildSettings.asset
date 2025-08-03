@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DogScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: b88ae183c89f05e4c99151cace13d63f
+  - enabled: 1
+    path: Assets/Scenes/PlayScene.unity
+    guid: e0fefb5214fbb1245a01808a871d1c3b
   m_configObjects: {}

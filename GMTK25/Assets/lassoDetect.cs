@@ -40,8 +40,6 @@ public class lassoDetect : MonoBehaviour
         if (tutorial)
         {
             Debug.Log("SHEEP");
-            GameObject.FindGameObjectWithTag("tutor").gameObject.GetComponent<tutorialManager>().sheepFate = true;
-            GameObject.FindGameObjectWithTag("tutor").gameObject.GetComponent<tutorialManager>().sheepCounter++;
             tutorSheep();
             Destroy(gameObject);
         }
@@ -69,7 +67,7 @@ public class lassoDetect : MonoBehaviour
             
         }
         //destroys sheep 
-        for(int i = 0; i < sheepList.Count; i++)
+        for(int i = 0; i <= sheepList.Count; i++)
         {
             SheepManager.instance.DestroySheep(sheepList[i]);
             sheepList.Remove(sheepList[i]);
@@ -81,10 +79,12 @@ public class lassoDetect : MonoBehaviour
         if (sheepList.Count <= 0)
             return;
         //destroys sheep 
-        for (int i = 0; i < sheepList.Count; i++)
+        for (int i = 0; i <= sheepList.Count; i++)
         {
             SheepManager.instance.DestroySheep(sheepList[i]);
             sheepList.Remove(sheepList[i]);
+            GameObject.FindGameObjectWithTag("tutor").gameObject.GetComponent<tutorialManager>().sheepFate = true;
+            GameObject.FindGameObjectWithTag("tutor").gameObject.GetComponent<tutorialManager>().sheepCounter++; ;
         }
         sheepList.Clear();
     }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class tutorialManager : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class tutorialManager : MonoBehaviour
     public GameObject TutDash;
 
     public GameObject fadeTut;
+    public RawImage fadeinTut;
 
     public TMP_Text top;
     public TMP_Text bottom;
@@ -52,8 +55,9 @@ public class tutorialManager : MonoBehaviour
         {
             StartCoroutine(fadeAway());
         }
-        if (sheepCounter > 0)
+        if (sheepCounter >= 8)
         {
+            finalTutor();
         }
     }
 
@@ -75,9 +79,28 @@ public class tutorialManager : MonoBehaviour
     IEnumerator sheepAway()
     {
         yield return new WaitForSeconds(2f);
-        sheepbutMorespawn1.GetComponent<BoxCollider2D>().size = new Vector2(0.84f,0.59f);
+        sheepbutMorespawn1.GetComponent<BoxCollider2D>().size = new Vector2(0.8f,0.59f);
         sheepbutMorespawn2.GetComponent<BoxCollider2D>().size = new Vector2(0.45f, 0.84f);
         sheepbutMore.GetComponent<SheepManager>().SpawnNumSheep(7);
+        yield return null;
+    }
+    void finalTutor()
+    {
+        fadeTut.SetActive(true);
+        StartCoroutine(fadeIn());
+    }
+    IEnumerator fadeIn()
+    {
+        for (int i = 0; i < 255; i++)
+        {
+            fadeinTut.color = new Color(0, 0, 0, (float)i/255);
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene("PlayScene");
+
         yield return null;
     }
 }
