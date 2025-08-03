@@ -2042,7 +2042,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2, y: 1}
+  m_Size: {x: 3, y: 1}
   m_Direction: 0
 --- !u!4 &906511102
 Transform:
@@ -2053,7 +2053,7 @@ Transform:
   m_GameObject: {fileID: 906511098}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9, z: 0}
+  m_LocalPosition: {x: 0, y: 8.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2870,19 +2870,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheepPrefabs:
   - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
-  - {fileID: 7033028572942249631, guid: d459f3239d2c20740ae28e8bfa3e66ba, type: 3}
-  - {fileID: 5764171693448643896, guid: 69c4b37a53c276046a0ede85e7cb2579, type: 3}
+  - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
+  - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
+  - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
+  - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
   - {fileID: 5764171693448643896, guid: 99e26baead7c1e44bbbb51fe72ca31ae, type: 3}
-  - {fileID: 330781898495786673, guid: 54418e67e1c780842a95ccbf545180db, type: 3}
-  - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
-  - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
-  - {fileID: 5764171693448643896, guid: 82defe3776622b04c8f5ab803d884d93, type: 3}
-  - {fileID: 5764171693448643896, guid: 82defe3776622b04c8f5ab803d884d93, type: 3}
+  - {fileID: 5764171693448643896, guid: 99e26baead7c1e44bbbb51fe72ca31ae, type: 3}
+  - {fileID: 5764171693448643896, guid: 99e26baead7c1e44bbbb51fe72ca31ae, type: 3}
+  - {fileID: 8661636758112746853, guid: 1dc49d925bb6f4a40ae1f0c49bcf3f4f, type: 3}
+  - {fileID: 8661636758112746853, guid: 1dc49d925bb6f4a40ae1f0c49bcf3f4f, type: 3}
+  - {fileID: 5764171693448643896, guid: 69c4b37a53c276046a0ede85e7cb2579, type: 3}
+  - {fileID: 5764171693448643896, guid: 69c4b37a53c276046a0ede85e7cb2579, type: 3}
+  - {fileID: 5764171693448643896, guid: 69c4b37a53c276046a0ede85e7cb2579, type: 3}
   currentSheep: []
   spawnZone: {fileID: 1525722169}
   spawnZone2: {fileID: 1623671898}
   startSheep: 5
   spawnInterval: 3
+  minSpawnInterval: 0.25
 --- !u!4 &1261090830
 Transform:
   m_ObjectHideFlags: 0
@@ -4260,7 +4265,11 @@ MonoBehaviour:
   multDecreaseTime: 5
   currentComboTime: 0
   comboUp: 0
-  numDashes: 0
+  difficultyIncrease: 0.2
+  difficultyThreshold: 50
+  difficultyRate: 5
+  difficultyTimer: 0
+  numDashes: 20
   maxDashes: 20
   dashSound: {fileID: 8300000, guid: 361a6d385654a5246a36f720fd446b75, type: 3}
   loopSound: {fileID: 8300000, guid: a67139a765f7b8b43832f88573a71bcd, type: 3}

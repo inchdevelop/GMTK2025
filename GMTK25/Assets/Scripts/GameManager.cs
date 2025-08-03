@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
@@ -13,6 +14,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] float multDecreaseTime;
     [SerializeField] float currentComboTime;
     [SerializeField] bool comboUp;
+
+    [SerializeField] float difficultyIncrease;
+    [SerializeField] float difficultyThreshold;
+    [SerializeField] float difficultyRate;
+    [SerializeField] float difficultyTimer;
+
 
      bool isPaused = false;
 
@@ -90,6 +97,15 @@ public class GameManager : MonoBehaviour
                 currentComboTime = 0;
                 MultReset();
             }
+        }
+
+        difficultyTimer += Time.deltaTime * difficultyRate;
+        if(difficultyTimer >= difficultyThreshold)
+        {
+            SheepManager.instance.spawnInterval -= difficultyIncrease;
+            if (SheepManager.instance.spawnInterval <= SheepManager.instance.minSpawnInterval)
+                SheepManager.instance.spawnInterval = SheepManager.instance.minSpawnInterval;
+            difficultyTimer = 0;
         }
     }
 

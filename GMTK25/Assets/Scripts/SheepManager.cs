@@ -12,7 +12,8 @@ public class SheepManager : MonoBehaviour
     [SerializeField] BoxCollider2D spawnZone2;
 
     [SerializeField] int startSheep;
-    [SerializeField] float spawnInterval;
+    [SerializeField] public float spawnInterval;
+    [SerializeField] public float minSpawnInterval;
     bool canSpawnSheep = true;
 
     public static SheepManager instance;
