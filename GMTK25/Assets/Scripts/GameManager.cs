@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] public int maxSheep = 20;
+    bool isGameOver = false;
 
     private void Awake()
     {
@@ -158,6 +159,8 @@ public class GameManager : MonoBehaviour
 
     public void PlayerPause()
     {
+        if (isGameOver)
+            return;
         isPaused = !isPaused;
         if(isPaused)
             Time.timeScale = 0.0f;
@@ -171,11 +174,12 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         UIManager.instance.GameOverToggle(totalScore);
+        isGameOver = true;
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("CombinedScene");
+        SceneManager.LoadScene("PlayScene");
         Time.timeScale = 1.0f;
     }
 
