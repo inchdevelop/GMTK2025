@@ -108,7 +108,6 @@ public class Sheep : MonoBehaviour
     {
         Vector2 oldTargetPos = targetPos;
 
-        GameObject[] sheepList = GameObject.FindGameObjectsWithTag("Sheep");
 
         //read type of sheep prob 
         bool canMove = false;
@@ -116,56 +115,6 @@ public class Sheep : MonoBehaviour
         {
             canMove = true;
             targetPos = SheepManager.instance.GetRandomSpawnLocation();
-
-
-            //if (sheepSO.type != SheepType.GOLD)
-            //{
-            //    float closestSheep = 5;
-            //    Sheep theOne = null;
-            //    for (int i = 0; i < sheepList.Length; i++)
-            //    {
-            //        if (sheepList[i].gameObject.GetComponent<Sheep>().sheepSO.type == SheepType.GOLD)
-            //        {
-            //            Vector2 tempPos = sheepList[i].gameObject.transform.position;
-            //            float sheepDistance = Vector2.Distance(transform.position, tempPos);
-            //            if (sheepDistance <= 5f && sheepDistance < closestSheep)
-            //            {
-            //                closestSheep = sheepDistance;
-            //                theOne = sheepList[i].gameObject.GetComponent<Sheep>();
-            //            }
-            //        }
-            //    }
-
-            //    if (theOne != null)
-            //    {
-            //        targetPos = theOne.transform.position;
-            //        done = true;
-            //    }
-            //}
-
-            //if (sheepSO.type != SheepType.BLACK && !done)
-            //{
-            //    float closestSheep = 5;
-            //    Sheep theOne = null;
-            //    for (int i = 0; i < sheepList.Length; i++)
-            //    {
-            //        if (sheepList[i].gameObject.GetComponent<Sheep>().sheepSO.type == SheepType.BLACK)
-            //        {
-            //            Vector2 tempPos = sheepList[i].gameObject.transform.position;
-            //            float sheepDistance = Vector2.Distance(transform.position, tempPos);
-            //            if (sheepDistance <= 5f && sheepDistance < closestSheep)
-            //            {
-            //                closestSheep = sheepDistance;
-            //                theOne = sheepList[i].gameObject.GetComponent<Sheep>();
-            //            }
-            //        }
-            //    }
-
-            //    if (theOne != null)
-            //    {
-            //        targetPos = 3f * (transform.position + ((transform.position - theOne.transform.position).normalized) );
-            //    }
-            //}
 
             if (!spawnBuffer.bounds.Contains(targetPos))
                 canMove = false;
