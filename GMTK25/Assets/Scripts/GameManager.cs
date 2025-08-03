@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         Sheep.onSheepKnockUp += SheepKnockedUp;
 
         Dogbowl.onDashRecovery += DashRecovery;
-        Dogbowl.onDashRecovery += PlayWaterbowl;
+        //Dogbowl.onDashRecovery += PlayWaterbowl;
         
         SheepManager.onGameOver += GameOver;
         SheepManager.onGameOver += PlayGameOver;
@@ -188,26 +188,26 @@ public class GameManager : MonoBehaviour
 
     void PlayDash()
     {
-        AudioSource.PlayClipAtPoint(dashSound, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(dashSound, Camera.main.transform.position,0.5f);
     }
 
     void PlayWaterbowl()
     {
-        AudioSource.PlayClipAtPoint(dashRecoverSound, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(dashRecoverSound, Camera.main.transform.position, 0.1f);
     }
 
     void PlayGameOver()
     {
-        AudioSource.PlayClipAtPoint(gameOverSound, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(gameOverSound, Camera.main.transform.position, 0.5f);
     }
 
     void PlayLoop()
     {
-        AudioSource.PlayClipAtPoint(loopSound, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(loopSound, Camera.main.transform.position, 0.25f);
     }
 
     void PlaySheepHit()
     {
-        AudioSource.PlayClipAtPoint(sheepHitSound, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(sheepHitSound, Camera.main.transform.position, 0.5f);
     }
 }

@@ -2622,6 +2622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashRecoveryInterval: 0.1
+  dashRecoverSound: {fileID: 8300000, guid: 1286e31814f0c8748ba54a0a99f7ccb3, type: 3}
 --- !u!70 &906511101
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -9971,11 +9972,11 @@ MonoBehaviour:
   difficultyTimer: 0
   numDashes: 20
   maxDashes: 20
-  dashSound: {fileID: 8300000, guid: 361a6d385654a5246a36f720fd446b75, type: 3}
-  loopSound: {fileID: 8300000, guid: a67139a765f7b8b43832f88573a71bcd, type: 3}
+  dashSound: {fileID: 8300000, guid: 396881bef81499f439127853cd7a555f, type: 3}
+  loopSound: {fileID: 8300000, guid: 07158abe22ceb7b46b109e6f48022361, type: 3}
   gameOverSound: {fileID: 8300000, guid: 719f08a1b6ee7c44bba4525efc762af4, type: 3}
-  dashRecoverSound: {fileID: 8300000, guid: ecdb3287dc12a4546b961748a1272403, type: 3}
-  sheepHitSound: {fileID: 8300000, guid: 255c123aaba90a94390ebd8a85850824, type: 3}
+  dashRecoverSound: {fileID: 8300000, guid: 1286e31814f0c8748ba54a0a99f7ccb3, type: 3}
+  sheepHitSound: {fileID: 8300000, guid: 739f8d63b1a80884c891b22b7001be39, type: 3}
   maxSheep: 15
 --- !u!4 &1653348008
 Transform:

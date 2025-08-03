@@ -22,6 +22,7 @@ public class tutorialManager : MonoBehaviour
 
     public TMP_Text top;
     public TMP_Text bottom;
+    public TMP_Text middle;
 
     public GameObject sheepbutMore;
     public GameObject sheepbutMorespawn1;
@@ -74,6 +75,7 @@ public class tutorialManager : MonoBehaviour
     IEnumerator fadeAway()
     {
         top.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000) * Time.deltaTime * 100);
+        middle.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000) * Time.deltaTime * 100);
         bottom.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1000) * Time.deltaTime * 100);
         yield return null;
     }

@@ -9,6 +9,7 @@ public class playerTutorial : MonoBehaviour
     Vector3 pastPos;
     public TMP_Text top;
     public TMP_Text bottom;
+    public TMP_Text left;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class playerTutorial : MonoBehaviour
     {
         top.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1000,0) * Time.deltaTime * 10);
         bottom.GetComponent<Rigidbody2D>().AddForce(new Vector2(1000, 0) * Time.deltaTime * 10);
+        left.GetComponent<Rigidbody2D>().AddForce(new Vector2(1000, 0) * Time.deltaTime * 10);
         yield return null;
     }
 }

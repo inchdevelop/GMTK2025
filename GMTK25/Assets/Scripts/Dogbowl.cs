@@ -8,10 +8,11 @@ public class Dogbowl : MonoBehaviour
     bool canRecover = true;
     public delegate void OnDashRecovery();
     public static event OnDashRecovery onDashRecovery;
+    [SerializeField] AudioClip dashRecoverSound;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if(collision.gameObject.CompareTag("Player"))
-           // onDashRecovery?.Invoke();
+        if(collision.gameObject.CompareTag("Player"))
+            AudioSource.PlayClipAtPoint(dashRecoverSound, Camera.main.transform.position, 0.1f);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -23,6 +24,8 @@ public class Dogbowl : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        AudioSource.Destroy(dashRecoverSound);
+
         if(!collision.gameObject.CompareTag("Player"))
             return;
         canRecover = true;

@@ -847,6 +847,7 @@ MonoBehaviour:
   inGameUI: {fileID: 184473196}
   pauseUI: {fileID: 1074727594}
   gameOverUI: {fileID: 1552430615}
+  highScoreTF: {fileID: 0}
   scoreTF: {fileID: 387163787}
   currentScoreTF: {fileID: 424235193}
   dashesLeft: {fileID: 15897747}
@@ -1230,6 +1231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   top: {fileID: 722935727}
   bottom: {fileID: 1150100974}
+  left: {fileID: 1151058399}
 --- !u!1 &328471882
 GameObject:
   m_ObjectHideFlags: 0
@@ -11191,7 +11193,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 174e937d9bcbc93409a7722ef1830d2c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11316,11 +11318,11 @@ MonoBehaviour:
   difficultyTimer: 0
   numDashes: 0
   maxDashes: 20
-  dashSound: {fileID: 8300000, guid: 361a6d385654a5246a36f720fd446b75, type: 3}
-  loopSound: {fileID: 8300000, guid: a67139a765f7b8b43832f88573a71bcd, type: 3}
+  dashSound: {fileID: 8300000, guid: 396881bef81499f439127853cd7a555f, type: 3}
+  loopSound: {fileID: 8300000, guid: 07158abe22ceb7b46b109e6f48022361, type: 3}
   gameOverSound: {fileID: 8300000, guid: 719f08a1b6ee7c44bba4525efc762af4, type: 3}
-  dashRecoverSound: {fileID: 8300000, guid: ecdb3287dc12a4546b961748a1272403, type: 3}
-  sheepHitSound: {fileID: 8300000, guid: 255c123aaba90a94390ebd8a85850824, type: 3}
+  dashRecoverSound: {fileID: 8300000, guid: 1286e31814f0c8748ba54a0a99f7ccb3, type: 3}
+  sheepHitSound: {fileID: 8300000, guid: 739f8d63b1a80884c891b22b7001be39, type: 3}
   maxSheep: 55
 --- !u!4 &1478800556
 Transform:
@@ -12489,6 +12491,7 @@ MonoBehaviour:
   fadeinTut: {fileID: 48764962}
   top: {fileID: 693030087}
   bottom: {fileID: 477601500}
+  middle: {fileID: 1914306566}
   sheepbutMore: {fileID: 1608319225}
   sheepbutMorespawn1: {fileID: 1718032623}
   sheepbutMorespawn2: {fileID: 275712745}
@@ -13252,6 +13255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashRecoveryInterval: 0.05
+  dashRecoverSound: {fileID: 8300000, guid: 1286e31814f0c8748ba54a0a99f7ccb3, type: 3}
 --- !u!70 &2022252129
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
