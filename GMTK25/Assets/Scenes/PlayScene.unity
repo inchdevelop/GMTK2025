@@ -2534,7 +2534,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888616428}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -2769,7 +2769,7 @@ GameObject:
   - component: {fileID: 1006898568}
   - component: {fileID: 1006898567}
   m_Layer: 5
-  m_Name: Score Text (1)
+  m_Name: High Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8559,6 +8559,7 @@ MonoBehaviour:
   inGameUI: {fileID: 187553375}
   pauseUI: {fileID: 1146555961}
   gameOverUI: {fileID: 888616430}
+  highScoreTF: {fileID: 1006898567}
   scoreTF: {fileID: 1044750821}
   currentScoreTF: {fileID: 1954629938}
   dashesLeft: {fileID: 1328633540}
@@ -9472,6 +9473,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539249999}
   m_CullTransparentMesh: 1
+--- !u!1 &1599089927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1599089929}
+  - component: {fileID: 1599089928}
+  m_Layer: 0
+  m_Name: ScoreHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1599089928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599089927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3226979551edb1648beae5c279c54445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScore: 0
+--- !u!4 &1599089929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599089927}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1613430947
 GameObject:
   m_ObjectHideFlags: 0
@@ -9930,7 +9976,7 @@ MonoBehaviour:
   gameOverSound: {fileID: 8300000, guid: 719f08a1b6ee7c44bba4525efc762af4, type: 3}
   dashRecoverSound: {fileID: 8300000, guid: ecdb3287dc12a4546b961748a1272403, type: 3}
   sheepHitSound: {fileID: 8300000, guid: 255c123aaba90a94390ebd8a85850824, type: 3}
-  maxSheep: 55
+  maxSheep: 15
 --- !u!4 &1653348008
 Transform:
   m_ObjectHideFlags: 0
@@ -11084,3 +11130,4 @@ SceneRoots:
   - {fileID: 1932791322}
   - {fileID: 1257257531}
   - {fileID: 974699910}
+  - {fileID: 1599089929}

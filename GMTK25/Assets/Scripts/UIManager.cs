@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] CanvasGroup inGameUI;
     [SerializeField] CanvasGroup pauseUI;
     [SerializeField] CanvasGroup gameOverUI;
+    [SerializeField] TextMeshProUGUI highScoreTF;
     [SerializeField] TextMeshProUGUI scoreTF;
     [SerializeField] TextMeshProUGUI currentScoreTF;
     [SerializeField] TextMeshProUGUI dashesLeft;
@@ -45,6 +46,9 @@ public class UIManager : MonoBehaviour
         gameOverUI.interactable = true;
         gameOverUI.blocksRaycasts = true;
 
+        if (score > ScoreHolder.instance.highScore)
+            ScoreHolder.instance.highScore = score;
+        highScoreTF.text = "High Score: " + ScoreHolder.instance.highScore;
         scoreTF.text = "Your Score: " + score;
     }
 
