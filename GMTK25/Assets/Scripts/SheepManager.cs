@@ -63,7 +63,7 @@ public class SheepManager : MonoBehaviour
         canSpawnSheep = true;
     }
 
-    void SpawnNumSheep(int num)
+    public void SpawnNumSheep(int num)
     {
         for(int i = 0; i < num; i++)
         {

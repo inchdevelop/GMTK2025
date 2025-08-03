@@ -26,7 +26,7 @@ public class dogBowlTutorial : MonoBehaviour
     {
         top.GetComponent<Rigidbody2D>().AddForce(new Vector2(10000, 0) * Time.deltaTime * 10);
         bottom.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10000, 0) * Time.deltaTime * 10);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
 
         GameObject.FindGameObjectWithTag("tutor").gameObject.GetComponent<tutorialManager>().bowlFate = true;
 

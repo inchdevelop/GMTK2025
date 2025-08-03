@@ -9,10 +9,13 @@ public class tutorialManager : MonoBehaviour
     public bool sheepFate = false;//first sheep herded
     public bool bowlFate = false;//bowl watered
     public bool dashFate = false;//dashing watered
+    public bool once = true;//dashing watered
 
     public GameObject bowl;
     public GameObject TutBowl;
     public GameObject TutDash;
+
+    public GameObject fadeTut;
 
     public TMP_Text top;
     public TMP_Text bottom;
@@ -20,6 +23,8 @@ public class tutorialManager : MonoBehaviour
     public GameObject sheepbutMore;
     public GameObject sheepbutMorespawn1;
     public GameObject sheepbutMorespawn2;
+
+    public int sheepCounter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -38,13 +43,17 @@ public class tutorialManager : MonoBehaviour
         {
             dashTutor();
         }
-        if (bowlFate && sheepFate)
+        if (bowlFate && sheepFate && once)
         {
             StartCoroutine(sheepAway());
+            once = false;
         }
         if (bowlFate && sheepFate && GameObject.FindGameObjectWithTag("Player").GetComponent<playerInput>().currentState == playerInput.DogStates.DASH)
         {
             StartCoroutine(fadeAway());
+        }
+        if (sheepCounter > 0)
+        {
         }
     }
 
@@ -59,15 +68,16 @@ public class tutorialManager : MonoBehaviour
     }
     IEnumerator fadeAway()
     {
-        top.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000) * Time.deltaTime * 10);
-        bottom.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1000) * Time.deltaTime * 10);
+        top.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000) * Time.deltaTime * 100);
+        bottom.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1000) * Time.deltaTime * 100);
         yield return null;
     }
     IEnumerator sheepAway()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         sheepbutMorespawn1.GetComponent<BoxCollider2D>().size = new Vector2(0.84f,0.59f);
-        sheepbutMorespawn1.GetComponent<BoxCollider2D>().size = new Vector2(0.45f, 0.84f);
+        sheepbutMorespawn2.GetComponent<BoxCollider2D>().size = new Vector2(0.45f, 0.84f);
+        sheepbutMore.GetComponent<SheepManager>().SpawnNumSheep(7);
         yield return null;
     }
 }

@@ -41,6 +41,7 @@ public class lassoDetect : MonoBehaviour
         {
             Debug.Log("SHEEP");
             GameObject.FindGameObjectWithTag("tutor").gameObject.GetComponent<tutorialManager>().sheepFate = true;
+            GameObject.FindGameObjectWithTag("tutor").gameObject.GetComponent<tutorialManager>().sheepCounter++;
             tutorSheep();
             Destroy(gameObject);
         }
