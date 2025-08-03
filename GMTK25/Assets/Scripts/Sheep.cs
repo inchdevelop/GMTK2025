@@ -92,6 +92,9 @@ public class Sheep : MonoBehaviour
             case SheepType.BROWN:
                 SheepFollowTarget(GameObject.FindGameObjectWithTag("Player").transform.position, sheepSO.speed);
                 break;
+            case SheepType.PINK:
+                SheepFleeTarget(GameObject.FindGameObjectWithTag("Player").transform.position, sheepSO.speed);
+                break;
             default:
                 SheepRandomMove();
                 break;
@@ -156,6 +159,14 @@ public class Sheep : MonoBehaviour
         gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, target, theSpeed * Time.deltaTime);
 
         RotateToNewPos(gameObject.transform.position, target);
+    }
+
+    public void SheepFleeTarget(Vector3 target, float theSpeed)
+    {
+        Vector3 fleeDirection = (gameObject.transform.position - target).normalized;
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, fleeDirection * 10f, theSpeed * Time.deltaTime);
+
+        RotateToNewPos(gameObject.transform.position, -fleeDirection);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

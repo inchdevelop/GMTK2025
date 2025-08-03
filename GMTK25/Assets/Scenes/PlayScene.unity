@@ -3004,15 +3004,11 @@ MonoBehaviour:
   - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
   - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
   - {fileID: 4470874606365491392, guid: 00769f36bc065744783c6ca2b0a4db70, type: 3}
-  - {fileID: 5764171693448643896, guid: 99e26baead7c1e44bbbb51fe72ca31ae, type: 3}
-  - {fileID: 5764171693448643896, guid: 99e26baead7c1e44bbbb51fe72ca31ae, type: 3}
-  - {fileID: 5764171693448643896, guid: 99e26baead7c1e44bbbb51fe72ca31ae, type: 3}
-  - {fileID: 8661636758112746853, guid: 1dc49d925bb6f4a40ae1f0c49bcf3f4f, type: 3}
-  - {fileID: 8661636758112746853, guid: 1dc49d925bb6f4a40ae1f0c49bcf3f4f, type: 3}
-  - {fileID: 8661636758112746853, guid: 1dc49d925bb6f4a40ae1f0c49bcf3f4f, type: 3}
   - {fileID: 5764171693448643896, guid: 69c4b37a53c276046a0ede85e7cb2579, type: 3}
   - {fileID: 5764171693448643896, guid: 69c4b37a53c276046a0ede85e7cb2579, type: 3}
-  - {fileID: 5764171693448643896, guid: 69c4b37a53c276046a0ede85e7cb2579, type: 3}
+  - {fileID: 5764171693448643896, guid: 99e26baead7c1e44bbbb51fe72ca31ae, type: 3}
+  - {fileID: 8661636758112746853, guid: 1dc49d925bb6f4a40ae1f0c49bcf3f4f, type: 3}
+  - {fileID: 5764171693448643896, guid: 82defe3776622b04c8f5ab803d884d93, type: 3}
   currentSheep: []
   spawnZone: {fileID: 1525722169}
   spawnZone2: {fileID: 1623671898}
@@ -3419,14 +3415,17 @@ MonoBehaviour:
   sheepFate: 0
   bowlFate: 0
   dashFate: 0
+  once: 1
   bowl: {fileID: 906511098}
   TutBowl: {fileID: 0}
   TutDash: {fileID: 0}
+  fadeTut: {fileID: 0}
   top: {fileID: 0}
   bottom: {fileID: 0}
   sheepbutMore: {fileID: 0}
   sheepbutMorespawn1: {fileID: 0}
   sheepbutMorespawn2: {fileID: 0}
+  sheepCounter: 0
 --- !u!4 &1342585111
 Transform:
   m_ObjectHideFlags: 0
